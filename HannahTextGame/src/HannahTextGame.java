@@ -20,7 +20,8 @@ public class HannahTextGame {
 	
 	static int location = 0;
 	
-	// TODO add static variable(s) to hold player's custom info (name, etc.) 
+	static String name;
+	static String gender;
 		
 	// TODO separate out some tasks (getting input, updating variable,
 	//      displaying output) into their own functions and call those
@@ -30,8 +31,6 @@ public class HannahTextGame {
 
 	public static void main(String[] args) {
 		
-		String name;
-		String gender;
 		String direction;
 		String userCommand;
 		
