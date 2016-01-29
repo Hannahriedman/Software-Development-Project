@@ -32,7 +32,7 @@ public class HannahTextGame {
 			
 			System.out.print("Enter a command: ");
 			userCommand = keyboard.nextLine();
-
+			// TODO make input case insensitive 
 			// primary game loop - updates the "game state"
 			if (userCommand.equals("N")) { 
 				direction = "North";
@@ -44,10 +44,16 @@ public class HannahTextGame {
 				direction = "West";
 			} else if (userCommand.equals("Q")) {
 				break; // gets out of the game loop
+			} else if (userCommand.equals("H")) {
+				System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
+						+ "Type Q to quit the game.");
 			} else {
 				System.out.println("Invalid command!\n");
 				continue; 
 			}
+			//now "render" the game state by providing feedback to the player
+			// TODO change this so that you print the description of the new location
+			//System.out.println("You moved " + direction + ".\n");
 
 		
 		}
