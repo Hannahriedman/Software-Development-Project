@@ -8,6 +8,16 @@ import java.util.Scanner;
  */
 public class HannahTextGame {
 	
+	// TODO add a static array variable to hold the local descriptions
+
+	// TODO add a static int variable to keep track of player's current locale 
+
+	// TODO add static variable(s) to hold player's custom info (name, etc.) 
+		
+	// TODO separate out some tasks (getting input, updating variable,
+	//      displaying output) into their own functions and call those
+	//      functions from within this main method
+	
 	static Scanner keyboard = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -33,23 +43,11 @@ public class HannahTextGame {
 			System.out.print("Enter a command: ");
 			userCommand = keyboard.nextLine();
 			// TODO make input case insensitive 
-			// primary game loop - updates the "game state"
-			if (userCommand.equals("N")) { 
-				direction = "North";
-			} else if (userCommand.equals("E")) { 
-				direction = "East";
-			} else if (userCommand.equals("S")) { 
-				direction = "South";
-			} else if (userCommand.equals("W")) { 
-				direction = "West";
-			} else if (userCommand.equals("Q")) {
-				break; // gets out of the game loop
-			} else if (userCommand.equals("H")) {
-				System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
-						+ "Type Q to quit the game.");
-			} else {
-				System.out.println("Invalid command!\n");
-				continue; 
+			direction = ProcessDirection(userCommand);
+			if (direction.equals(null)) {
+				break;
+			} else if (direction.equals("start over")) {
+				continue;
 			}
 			//now "render" the game state by providing feedback to the player
 			// TODO change this so that you print the description of the new location
@@ -59,5 +57,31 @@ public class HannahTextGame {
 		}
 
 	}
+	
+	public static String ProcessDirection(String userCommand) {
+		String direction = null;
+		
+		if (userCommand.equals("N")) { 
+			direction = "North";
+		} else if (userCommand.equals("E")) { 
+			direction = "East";
+		} else if (userCommand.equals("S")) { 
+			direction = "South";
+		} else if (userCommand.equals("W")) { 
+			direction = "West";
+		} else if (userCommand.equals("Q")) {
+			return null; // gets out of the game loop
+		} else if (userCommand.equals("H")) {
+			System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
+					+ "Type Q to quit the game.");
+		} else {
+			System.out.println("Invalid command!\n");
+			return "start over"; 
+		}
+		
+		return direction;
+	}
+		
+		
 
 }
