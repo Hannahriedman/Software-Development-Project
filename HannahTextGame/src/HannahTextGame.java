@@ -8,6 +8,17 @@ import java.util.Scanner;
  */
 public class HannahTextGame {
 	
+	static String [] descriptions={
+			"You arrive at the creepy mansion in the dark of night.\n "
+			+ "There is a large door in front of you.", // outside 0
+			"You are now in the Foyer. There is a study to the East and sitting room\n"
+			+ "to the West.", // Foyer 1
+			"You are now in the Study. To the North is a door.", // Study 2
+			"You are now in the sitting room.", // sitting room 3
+			"You are now in the Library" // library 4		
+	};
+	
+	
 	// TODO add a static array variable to hold the local descriptions
 
 	// TODO add a static int variable to keep track of player's current locale 
@@ -29,8 +40,7 @@ public class HannahTextGame {
 		
 		System.out.println("Murder Mystery Game!");
 		System.out.println("********************\n");
-		System.out.println("You arrive at the creepy mansion in the dark of night.\n"
-							+ "There is a large door in front of you.");
+		System.out.println(descriptions[0]);
 		System.out.print("What is your character's name?");
 		name = keyboard.nextLine();
 		System.out.print("What is your character's gender?(m or f)");
