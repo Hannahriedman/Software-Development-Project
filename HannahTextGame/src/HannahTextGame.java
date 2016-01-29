@@ -14,6 +14,8 @@ public class HannahTextGame {
 		
 		System.out.println("Murder Mystery Game!");
 		System.out.println("********************\n");
+		System.out.println("You arrive at the creepy mansion in the dark of night. "
+							+ "There is a large door in front of you.");
 		
 
 	}
