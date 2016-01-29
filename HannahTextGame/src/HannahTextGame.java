@@ -30,7 +30,24 @@ public class HannahTextGame {
 				+ "N,E,S,W commands. Go North to the door to start the adventure!");
 		while (true) {
 			
-			
+			System.out.print("Enter a command: ");
+			userCommand = keyboard.nextLine();
+
+			// primary game loop - updates the "game state"
+			if (userCommand.equals("N")) { 
+				direction = "North";
+			} else if (userCommand.equals("E")) { 
+				direction = "East";
+			} else if (userCommand.equals("S")) { 
+				direction = "South";
+			} else if (userCommand.equals("W")) { 
+				direction = "West";
+			} else if (userCommand.equals("Q")) {
+				break; // gets out of the game loop
+			} else {
+				System.out.println("Invalid command!\n");
+				continue; 
+			}
 
 		
 		}
