@@ -11,7 +11,10 @@ public class HannahTextGame {
 	static Scanner keyboard = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		System.out.println("Murder Mystery Game!");
+		System.out.println("********************\n");
+		
 
 	}
 
