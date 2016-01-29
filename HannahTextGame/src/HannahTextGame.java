@@ -18,11 +18,8 @@ public class HannahTextGame {
 			"You are now in the Library" // library 4		
 	};
 	
+	static int location = 0;
 	
-	// TODO add a static array variable to hold the local descriptions
-
-	// TODO add a static int variable to keep track of player's current locale 
-
 	// TODO add static variable(s) to hold player's custom info (name, etc.) 
 		
 	// TODO separate out some tasks (getting input, updating variable,
