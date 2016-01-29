@@ -1,4 +1,9 @@
 
+/**
+ * CMPT 220L 114
+ * Project 1
+ * Date created: 1-29-16
+ */
 import java.util.Scanner;
 
 /**
