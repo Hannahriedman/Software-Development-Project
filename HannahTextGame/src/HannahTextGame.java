@@ -56,7 +56,7 @@ public class HannahTextGame {
 			userCommand = keyboard.nextLine();
 			// TODO make input case insensitive 
 			direction = ProcessDirection(userCommand); 
-			System.out.print(direction);
+		
 			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
 				break;
 			} else if (direction.equals("start over")) {
@@ -65,26 +65,22 @@ public class HannahTextGame {
 			
 			if (direction.equals("North")) {
 				if (location == 0) {
-					System.out.print(descriptions[1]);
-					location = 1;
+					location = ProcessLocation(1);
 				} else if (location == 1 || location == 3 || location == 4 || location == 5){
 					System.out.print("You can not go North.");
 				} else if (location == 2) {
-					System.out.print(descriptions[4]);
-					location = 4;
+					location = ProcessLocation(4);
 				} 
 			} else if (direction.equals("East")) {
 				if (location == 1) {
-					System.out.print(descriptions[2]); // Study
-					location = 2;
+					location = ProcessLocation(2);
 				} else if (location == 0 || location == 2 || location == 4){
 					System.out.print("You can not go East.");
 				} else if (location == 3) {
 					System.out.print(descriptions[1]); // back to Foyer 
 					location = 1;
 				} else if (location == 5) {
-					System.out.print(descriptions[4]); // to library
-					location = 4;
+					location = ProcessLocation(4);
 				}
 			} else if (direction.equals("South")) {
 				if (location == 1) {
@@ -92,21 +88,17 @@ public class HannahTextGame {
 				} else if (location == 0 || location == 2 || location == 3 ){
 					System.out.print("You can not go South.");
 				} else if (location == 4) {
-					System.out.print(descriptions[2]); // back to study 
-					location = 2;
+					location = ProcessLocation(2);
 				}
 			} else if (direction.equals("West")) {
 				if (location == 1) {
-					System.out.print(descriptions[3]); // Sitting room
-					location = 3;
+					location = ProcessLocation(3);
 				} else if (location == 0 || location == 3 || location == 5){
 					System.out.print("You can not go West.");
 				} else if (location == 2) {
-					System.out.print(descriptions[1]); // back to Foyer 
-					location = 1;
+					location = ProcessLocation(1);
 				} else if (location == 4) {
-					System.out.print(descriptions[5]); // to stairway
-					location = 5;
+					location = ProcessLocation(5);
 				}
 			}
 			//now "render" the game state by providing feedback to the player
@@ -148,7 +140,13 @@ public class HannahTextGame {
 		
 		return direction;
 	}
+	
+	public static int ProcessLocation(int location) {
 		
+		System.out.print(descriptions[location]);
+		return location;
+		
+	}
 		
 
 }
