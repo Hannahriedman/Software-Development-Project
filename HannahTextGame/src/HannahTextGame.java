@@ -20,7 +20,8 @@ public class HannahTextGame {
 			+ "to the West.", // Foyer 1
 			"You are now in the Study. To the North is a door.", // Study 2
 			"You are now in the sitting room.", // sitting room 3
-			"You are now in the Library" // library 4		
+			"You are now in the Library", // library 4		
+			"You have found a secret stairway after leaning on the bookcase."
 	};
 	
 	static int location = 0;
@@ -65,12 +66,12 @@ public class HannahTextGame {
 				if (location == 0) {
 					System.out.print(descriptions[1]);
 					location = 1;
-				} else if (location == 1 || location == 3 || location == 4){
+				} else if (location == 1 || location == 3 || location == 4 || location == 5){
 					System.out.print("You can not go North.");
 				} else if (location == 2) {
 					System.out.print(descriptions[4]);
 					location = 4;
-				}
+				} 
 			} else if (direction.equals("East")) {
 				if (location == 1) {
 					System.out.print(descriptions[2]); // Study
@@ -80,11 +81,14 @@ public class HannahTextGame {
 				} else if (location == 3) {
 					System.out.print(descriptions[1]); // back to Foyer 
 					location = 1;
+				} else if (location == 5) {
+					System.out.print(descriptions[4]); // to library
+					location = 4;
 				}
 			} else if (direction.equals("South")) {
 				if (location == 1) {
 					System.out.print("It would not be a good idea to go back outside"); 
-				} else if (location == 0 || location == 2 || location == 3){
+				} else if (location == 0 || location == 2 || location == 3 ){
 					System.out.print("You can not go South.");
 				} else if (location == 4) {
 					System.out.print(descriptions[2]); // back to study 
@@ -94,11 +98,14 @@ public class HannahTextGame {
 				if (location == 1) {
 					System.out.print(descriptions[3]); // Sitting room
 					location = 3;
-				} else if (location == 0 || location == 3 || location == 4){
+				} else if (location == 0 || location == 3 || location == 5){
 					System.out.print("You can not go West.");
 				} else if (location == 2) {
 					System.out.print(descriptions[1]); // back to Foyer 
 					location = 1;
+				} else if (location == 4) {
+					System.out.print(descriptions[5]); // to stairway
+					location = 5;
 				}
 			}
 			//now "render" the game state by providing feedback to the player
