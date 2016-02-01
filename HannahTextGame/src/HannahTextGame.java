@@ -56,7 +56,8 @@ public class HannahTextGame {
 			userCommand = keyboard.nextLine();
 			// TODO make input case insensitive 
 			direction = ProcessDirection(userCommand); 
-			if (direction.equals(null)) {  // checks to see if you want to start over or quit
+			System.out.print(direction);
+			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
 				break;
 			} else if (direction.equals("start over")) {
 				continue;
@@ -114,6 +115,12 @@ public class HannahTextGame {
 
 		
 		}
+		
+		System.out.println("Thanks For Playing " + name + " !\n");
+		System.out.println("Creater: Hannah Riedman\n Copyright Hannah Games 2016");
+
+		 
+		keyboard.close();
 
 	}
 	
@@ -129,10 +136,11 @@ public class HannahTextGame {
 		} else if (userCommand.equals("W")) { 
 			direction = "West";
 		} else if (userCommand.equals("Q")) {
-			return null; // gets out of the game loop
+			return "quit"; // gets out of the game loop
 		} else if (userCommand.equals("H")) {
 			System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
 					+ "Type Q to quit the game.");
+			return "start over";
 		} else {
 			System.out.println("Invalid command!\n");
 			return "start over"; 
