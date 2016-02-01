@@ -60,6 +60,22 @@ public class HannahTextGame {
 			} else if (direction.equals("start over")) {
 				continue;
 			}
+			if (direction.equals("North")) {
+				if (location == 0) {
+					System.out.print(descriptions[1]);
+					location = 1;
+				} else if (location == 1 || location == 3 || location == 4){
+					System.out.print("You can not go North.");
+				} else if (location == 2) {
+					System.out.print(descriptions[4]);
+				}
+			} else if (direction.equals("East")) {
+				
+			} else if (direction.equals("South")) {
+				
+			} else if (direction.equals("West")) {
+				
+			}
 			//now "render" the game state by providing feedback to the player
 			// TODO change this so that you print the description of the new location
 			//System.out.println("You moved " + direction + ".\n");
