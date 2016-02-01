@@ -69,6 +69,7 @@ public class HannahTextGame {
 					System.out.print("You can not go North.");
 				} else if (location == 2) {
 					System.out.print(descriptions[4]);
+					location = 4;
 				}
 			} else if (direction.equals("East")) {
 				if (location == 1) {
