@@ -54,7 +54,8 @@ public class HannahTextGame {
 			
 			System.out.print("Enter a command: ");
 			userCommand = keyboard.nextLine();
-			// TODO make input case insensitive 
+			userCommand = userCommand.toUpperCase();
+	
 			direction = ProcessDirection(userCommand); 
 		
 			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
