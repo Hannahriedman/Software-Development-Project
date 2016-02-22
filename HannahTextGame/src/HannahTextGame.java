@@ -53,7 +53,7 @@ public class HannahTextGame {
 			userCommand = keyboard.nextLine();
 			userCommand = userCommand.toUpperCase(); // makes input case sensititive.
 	
-			direction = ProcessDirection(userCommand); // changes input into directions/commands
+			direction = processDirection(userCommand); // changes input into directions/commands
 		
 			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
 				break;  // quits game
@@ -61,7 +61,7 @@ public class HannahTextGame {
 				continue; // starts loop over 
 			}
 			
-			Navigation(direction); // takes direction input and changes location   
+			navigation(direction); // takes direction input and changes location   
 
 		
 		}
@@ -74,7 +74,7 @@ public class HannahTextGame {
 
 	}
 	
-	public static String ProcessDirection(String userCommand) {
+	public static String processDirection(String userCommand) {
 		String direction = null;
 		
 		if (userCommand.equals("N")) { 
@@ -99,7 +99,7 @@ public class HannahTextGame {
 		return direction;
 	}
 	
-	public static int ProcessLocation(int location) {
+	public static int processLocation(int location) {
 
 		// this method takes the location and displays the description 
 		
@@ -108,28 +108,28 @@ public class HannahTextGame {
 		
 	}
 		
-	public static void Navigation (String direction) {
+	public static void navigation (String direction) {
 		
 		// this method takes direction and changes location and displays description
 		
 		if (direction.equals("North")) {
 			if (location == 0) {
-				location = ProcessLocation(1);
+				location = processLocation(1);
 			} else if (location == 1 || location == 3 || location == 4 || location == 5){
 				System.out.print("You can not go North.");
 			} else if (location == 2) {
-				location = ProcessLocation(4);
+				location = processLocation(4);
 			} 
 		} else if (direction.equals("East")) {
 			if (location == 1) {
-				location = ProcessLocation(2);
+				location = processLocation(2);
 			} else if (location == 0 || location == 2 || location == 4){
 				System.out.print("You can not go East.");
 			} else if (location == 3) {
 				System.out.print(descriptions[1]); 
 				location = 1;
 			} else if (location == 5) {
-				location = ProcessLocation(4);
+				location = processLocation(4);
 			}
 		} else if (direction.equals("South")) {
 			if (location == 1) {
@@ -137,17 +137,17 @@ public class HannahTextGame {
 			} else if (location == 0 || location == 2 || location == 3 ){
 				System.out.print("You can not go South.");
 			} else if (location == 4) {
-				location = ProcessLocation(2);
+				location = processLocation(2);
 			}
 		} else if (direction.equals("West")) {
 			if (location == 1) {
-				location = ProcessLocation(3);
+				location = processLocation(3);
 			} else if (location == 0 || location == 3 || location == 5){
 				System.out.print("You can not go West.");
 			} else if (location == 2) {
-				location = ProcessLocation(1);
+				location = processLocation(1);
 			} else if (location == 4) {
-				location = ProcessLocation(5);
+				location = processLocation(5);
 			}
 		}
 	}
