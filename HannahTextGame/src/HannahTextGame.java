@@ -23,57 +23,60 @@ public class HannahTextGame {
 			"You are now in the Library", // library 4		
 			"You have found a secret stairway after leaning on the bookcase." // secret stairway 5
 	};**/ 
-	
+	public String name;
+	public String descrip;
 	static int location = 0; // static variable declarations 
-	static String name;
+	//static String name;
 	static String gender;
 	
 	static Scanner keyboard = new Scanner(System.in);
+	
+	static Locale outside = new Locale(
+			"Outside",
+			"You arrive at the creepy mansion in the dark of night.\n"
+			+ "There is a large door in front of you.",
+			"no item");
+	static Locale foyer = new Locale(
+			"Foyer",
+			"You are now in the Foyer. There is a study to the East and sitting room\n "
+			+ "to the West.",
+			"no item");
+	static Locale study = new Locale(
+			"Study",
+			"You are now in the Study. To the North is a door.",
+			"Dictonary");
+	static Locale sittingRoom = new Locale(
+			"Sitting Room",
+			"You are now in the Sitting Room.",
+			"CandleStick");
+	static Locale library = new Locale(
+			"Library",
+			"You are now in the Library.",
+			"Rope");
+	static Locale secretStairway = new Locale(
+			"Secret Stairway",
+			"You have found a secret stairway after leaning on the bookcase.",
+			"no item");
+	
+	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway};
+								// 0      1      2       3          4          5
+	
 
 	public static void main(String[] args) {
 		
 		String direction;  // variable declarations 
 		String userCommand;
 		
-		Locale outside = new Locale(
-				"Outside",
-				"You arrive at the creepy mansion in the dark of night.\n"
-				+ "There is a large door in front of you.",
-				"no item");
-		Locale foyer = new Locale(
-				"Foyer",
-				"You are now in the Foyer. There is a study to the East and sitting room\n "
-				+ "to the West.",
-				"no item");
-		Locale study = new Locale(
-				"Study",
-				"You are now in the Study. To the North is a door.",
-				"Dictonary");
-		Locale sittingRoom = new Locale(
-				"Sitting Room",
-				"You are now in the Sitting Room.",
-				"CandleStick");
-		Locale library = new Locale(
-				"Library",
-				"You are now in the Library.",
-				"Rope");
-		Locale secretStairway = new Locale(
-				"Secret Stairway",
-				"You have found a secret stairway after leaning on the bookcase.",
-				"no item");
-		
-		Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway};
-		
 		System.out.println("Murder Mystery Game!");  // Intro and character customization
 		System.out.println("********************\n");
 		System.out.print("What is your character's name?");
-		name = keyboard.nextLine();
+		//name = keyboard.nextLine();
 		System.out.print("What is your character's gender?(m or f)");
 		gender = keyboard.nextLine();
-		
+		System.out.print(locations[0]);
 		System.out.println(outside.descrip);  // start of game
 		System.out.println("*************************************");
-		System.out.println("Hello Detective " + name + "! You can navigate the game by using\n"
+		System.out.println("Hello Detective " + "! You can navigate the game by using\n" // add in name
 				+ "N,E,S,W commands. Go North to the door to start the adventure!");
 		
 		while (true) {
@@ -95,7 +98,7 @@ public class HannahTextGame {
 		
 		}
 		
-		System.out.println("Thanks For Playing " + name + " !\n");
+		System.out.println("Thanks For Playing " + " !\n"); // add in name
 		System.out.println("Creater: Hannah Riedman\n Copyright Hannah Games 2016");
 
 		 
@@ -131,12 +134,14 @@ public class HannahTextGame {
 	public static int processLocation(int location) {
 
 		// this method takes the location and displays the description 
+		Object currentLoc = locations[location];
 		
-		System.out.println(locations[location]);
+		System.out.println(currentLoc);
 		return location;
 		
 	}
 		
+
 	public static void navigation (String direction) {
 		
 		// this method takes direction and changes location and displays description
@@ -155,8 +160,7 @@ public class HannahTextGame {
 			} else if (location == 0 || location == 2 || location == 4){
 				System.out.print("You can not go East.");
 			} else if (location == 3) {
-				System.out.print(descriptions[1]); 
-				location = 1;
+				location = processLocation(1);
 			} else if (location == 5) {
 				location = processLocation(4);
 			}

@@ -10,4 +10,13 @@ public class Locale {
 		this.descrip = descrip;
 		this.item  = item;
 	}
+	
+	public String readLocation() {
+		return this.descrip;
+	}
+	
+	@Override
+	public String toString() {
+		return  this.descrip;
+	}
 }
