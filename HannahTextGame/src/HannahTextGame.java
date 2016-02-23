@@ -24,6 +24,10 @@ public class HannahTextGame {
 			"You have found a secret stairway after leaning on the bookcase." // secret stairway 5
 	};
 	
+	Locale outside = new Locale(
+			"Outside",
+			"You arrive at the creepy mansion in the dark of night.\n",
+			"no item");
 	
 	static int location = 0; // static variable declarations 
 	static String name;
