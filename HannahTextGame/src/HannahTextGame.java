@@ -13,16 +13,6 @@ import java.util.Scanner;
  */
 public class HannahTextGame {
 	
-	/**static String [] descriptions={  // Array to hold descriptions for locations
-			"You arrive at the creepy mansion in the dark of night.\n"
-			+ "There is a large door in front of you.", // outside 0
-			"You are now in the Foyer. There is a study to the East and sitting room\n"
-			+ "to the West.", // Foyer 1
-			"You are now in the Study. To the North is a door.", // Study 2
-			"You are now in the sitting room.", // sitting room 3
-			"You are now in the Library", // library 4		
-			"You have found a secret stairway after leaning on the bookcase." // secret stairway 5
-	};**/ 
 	public String name; // location name
 	public String descrip;
 	static String gender;
@@ -60,7 +50,6 @@ public class HannahTextGame {
 			"no item");
 	
 	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway};
-	
 								// 0      1      2       3          4          5
 	
 	static Player player1 = new Player(playerName, location,gender, inventory);
