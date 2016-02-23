@@ -24,6 +24,7 @@ public class HannahTextGame {
 			"You have found a secret stairway after leaning on the bookcase." // secret stairway 5
 	};
 	
+	
 	static int location = 0; // static variable declarations 
 	static String name;
 	static String gender;
