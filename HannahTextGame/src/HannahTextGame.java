@@ -20,6 +20,11 @@ public class HannahTextGame {
 	static String playerName;
 	static String[] inventory;
 	
+	static int north = 0;
+	static int east = 1;
+	static int south = 2;
+	static int west = 3;
+	
 	static Scanner keyboard = new Scanner(System.in);
 	
 	static Locale outside = new Locale(
@@ -116,12 +121,16 @@ public class HannahTextGame {
 		
 		if (userCommand.equals("N")) { 
 			direction = "North";
+			move(north);
 		} else if (userCommand.equals("E")) { 
 			direction = "East";
+			move(east);
 		} else if (userCommand.equals("S")) { 
 			direction = "South";
+			move(south);
 		} else if (userCommand.equals("W")) { 
 			direction = "West";
+			move(west);
 		} else if (userCommand.equals("Q")) {
 			return "quit"; 
 		} else if (userCommand.equals("M")) {
@@ -151,7 +160,15 @@ public class HannahTextGame {
 		return location;
 		
 	}
+	public static Object from (Object loc,int dir) {
 		
+		
+		return location;
+		
+	}
+	public static void move(int dir) {
+		Object nextlocation = from(player1.location,dir);
+	}
 
 	public static void navigation (String direction) {
 		
