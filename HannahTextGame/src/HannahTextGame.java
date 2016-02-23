@@ -41,7 +41,27 @@ public class HannahTextGame {
 				"You arrive at the creepy mansion in the dark of night.\n"
 				+ "There is a large door in front of you.",
 				"no item");
-		
+		Locale foyer = new Locale(
+				"Foyer",
+				"You are now in the Foyer. There is a study to the East and sitting room\n "
+				+ "to the West.",
+				"no item");
+		Locale study = new Locale(
+				"Study",
+				"You are now in the Study. To the North is a door.",
+				"Dictonary");
+		Locale sittingRoom = new Locale(
+				"Sitting Room",
+				"You are now in the Sitting Room.",
+				"CandleStick");
+		Locale library = new Locale(
+				"Library",
+				"You are now in the Library.",
+				"Rope");
+		Locale secretStairway = new Locale(
+				"Secret Stairway",
+				"You have found a secret stairway after leaning on the bookcase.",
+				"no item");
 		
 		System.out.println("Murder Mystery Game!");  // intro and character customization
 		System.out.println("********************\n");
