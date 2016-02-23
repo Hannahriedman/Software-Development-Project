@@ -96,7 +96,7 @@ public class HannahTextGame {
 				break;  // quits game
 			} else if (direction.equals("start over")) {
 				continue; // starts loop over 
-			}
+			} 
 			
 			navigation(direction); // takes direction input and changes location   
 
@@ -123,7 +123,13 @@ public class HannahTextGame {
 		} else if (userCommand.equals("W")) { 
 			direction = "West";
 		} else if (userCommand.equals("Q")) {
-			return "quit"; // gets out of the game loop
+			return "quit"; 
+		} else if (userCommand.equals("M")) {
+			showMap();
+			return "start over"; 
+		} else if (userCommand.equals("T")) {
+			takeItem();
+			return "start over"; 
 		} else if (userCommand.equals("H")) {
 			System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
 					+ "Type Q to quit the game.");
@@ -189,4 +195,16 @@ public class HannahTextGame {
 			}
 		}
 	}
+	
+	public static void showMap () {
+		System.out.println();
+	}
+	
+	public void takeItem (Object Location) {
+		
+		if(Locale.item.equals("no item")) {
+			System.out.println("There is no item here!");
+		}
+	}
 }
+	
