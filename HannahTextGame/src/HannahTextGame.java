@@ -15,10 +15,12 @@ public class HannahTextGame {
 	
 	public String name; // location name
 	public String descrip;
+	public int index;
 	static String gender;
 	static int location = 0; // static variable declarations 
 	static String playerName;
 	static String[] inventory;
+	//static int index;
 	
 	static int north = 0;
 	static int east = 1;
@@ -31,28 +33,28 @@ public class HannahTextGame {
 			"Outside",
 			"You arrive at the creepy mansion in the dark of night.\n"
 			+ "There is a large door in front of you.",
-			"no item");
+			"no item",0);
 	static Locale foyer = new Locale(
 			"Foyer",
 			"You are now in the Foyer. There is a study to the East and sitting room\n"
 			+ "to the West.",
-			"no item");
+			"no item",1);
 	static Locale study = new Locale(
 			"Study",
 			"You are now in the Study. To the North is a door.",
-			"Dictonary");
+			"Dictonary",2);
 	static Locale sittingRoom = new Locale(
 			"Sitting Room",
 			"You are now in the Sitting Room.",
-			"CandleStick");
+			"CandleStick",3);
 	static Locale library = new Locale(
 			"Library",
 			"You are now in the Library.",
-			"Rope");
+			"Rope",4);
 	static Locale secretStairway = new Locale(
 			"Secret Stairway",
 			"You have found a secret stairway after leaning on the bookcase.",
-			"no item");
+			"no item",5);
 	
 	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway};
 								// 0      1      2       3          4          5
@@ -94,7 +96,7 @@ public class HannahTextGame {
 			System.out.println("Enter a command: ");
 			userCommand = keyboard.nextLine().toUpperCase();
 			// makes input case sensititive.
-	
+			System.out.println("You entered: " + userCommand);
 			direction = processDirection(userCommand); // changes input into directions/commands
 		
 			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
@@ -103,7 +105,7 @@ public class HannahTextGame {
 				continue; // starts loop over 
 			} 
 			
-			navigation(direction); // takes direction input and changes location   
+			//navigation(direction); // takes direction input and changes location   
 
 		
 		}
@@ -121,23 +123,23 @@ public class HannahTextGame {
 		
 		if (userCommand.equals("N")) { 
 			direction = "North";
-			move(north);
+			move(north,direction);
 		} else if (userCommand.equals("E")) { 
 			direction = "East";
-			move(east);
+			move(east,direction);
 		} else if (userCommand.equals("S")) { 
 			direction = "South";
-			move(south);
+			move(south,direction);
 		} else if (userCommand.equals("W")) { 
 			direction = "West";
-			move(west);
+			move(west,direction);
 		} else if (userCommand.equals("Q")) {
 			return "quit"; 
 		} else if (userCommand.equals("M")) {
 			showMap();
 			return "start over"; 
 		} else if (userCommand.equals("T")) {
-			takeItem();
+			//takeItem();
 			return "start over"; 
 		} else if (userCommand.equals("H")) {
 			System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
@@ -160,14 +162,27 @@ public class HannahTextGame {
 		return location;
 		
 	}
-	public static Object from (Object loc,int dir) {
-		
-		
-		return location;
+	
+	public static Object from (int dir) {
+		int location = player1.location;
+		//Object locId = locations[location];
+		return map[location][dir];
 		
 	}
-	public static void move(int dir) {
-		Object nextlocation = from(player1.location,dir);
+	public static void move(int dir, String command) {
+		Object nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale instance
+		
+		int currentLocation = nextLocation.index;
+		if (nextLocation.equals(null)) {
+			System.out.println("You can not go " + command + " .");// add in stuff about you can not go here
+		} else {
+			System.out.println(nextLocation);
+			player1.location = Location;
+			/** add in stuff about changing currentlocation in player to next
+			/
+			 */
+			 
+		}
 	}
 
 	public static void navigation (String direction) {
