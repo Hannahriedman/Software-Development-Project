@@ -51,6 +51,18 @@ public class HannahTextGame {
 	
 	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway};
 								// 0      1      2       3          4          5
+	static Object [][] map = {
+	           // NORTH, EAST, SOUTH, WEST 
+	           {locations[1], null, null, null }, // from outside: Foyer ---
+	           { null, locations[2], null, locations[3] }, // from Foyer: -study-sitting room 
+	           { locations[4], null, null, locations[1] }, // from Study: library--Foyer
+	           { null, locations[1], null, null }, // from SitingRoom: -Foyer--
+	           { null, null, locations[2], locations[5] }, // from Library: --Study secret stairway
+	           { null, null, null, null }, // from SecretStairway: 
+	           { null, null, null, null }, // from :
+	           { null, null, null, null }, // from : 
+	           { null, null, null, null } // from:
+	};
 	
 	static Player player1 = new Player(playerName, location,gender, inventory);
 	
