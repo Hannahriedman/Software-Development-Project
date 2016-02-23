@@ -23,11 +23,12 @@ public class HannahTextGame {
 			"You are now in the Library", // library 4		
 			"You have found a secret stairway after leaning on the bookcase." // secret stairway 5
 	};**/ 
-	public String name;
+	public String name; // location name
 	public String descrip;
-	static int location = 0; // static variable declarations 
-	//static String name;
 	static String gender;
+	static int location = 0; // static variable declarations 
+	static String playerName;
+	static String[] inventory;
 	
 	static Scanner keyboard = new Scanner(System.in);
 	
@@ -38,7 +39,7 @@ public class HannahTextGame {
 			"no item");
 	static Locale foyer = new Locale(
 			"Foyer",
-			"You are now in the Foyer. There is a study to the East and sitting room\n "
+			"You are now in the Foyer. There is a study to the East and sitting room\n"
 			+ "to the West.",
 			"no item");
 	static Locale study = new Locale(
@@ -59,7 +60,10 @@ public class HannahTextGame {
 			"no item");
 	
 	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway};
+	
 								// 0      1      2       3          4          5
+	
+	static Player player1 = new Player(playerName, location,gender, inventory);
 	
 
 	public static void main(String[] args) {
@@ -70,20 +74,20 @@ public class HannahTextGame {
 		System.out.println("Murder Mystery Game!");  // Intro and character customization
 		System.out.println("********************\n");
 		System.out.print("What is your character's name?");
-		//name = keyboard.nextLine();
+		player1.name = keyboard.nextLine();
 		System.out.print("What is your character's gender?(m or f)");
-		gender = keyboard.nextLine();
-		System.out.print(locations[0]);
-		System.out.println(outside.descrip);  // start of game
+		player1.gender = keyboard.nextLine(); // test to check gender
+		System.out.println(player1.gender);
+		System.out.println(locations[0]); // start of game
 		System.out.println("*************************************");
-		System.out.println("Hello Detective " + "! You can navigate the game by using\n" // add in name
+		System.out.println("Hello Detective " + player1.name +"! You can navigate the game by using\n" 
 				+ "N,E,S,W commands. Go North to the door to start the adventure!");
 		
 		while (true) {
 			
-			System.out.print("Enter a command: ");
-			userCommand = keyboard.nextLine();
-			userCommand = userCommand.toUpperCase(); // makes input case sensititive.
+			System.out.println("Enter a command: ");
+			userCommand = keyboard.nextLine().toUpperCase();
+			// makes input case sensititive.
 	
 			direction = processDirection(userCommand); // changes input into directions/commands
 		
@@ -98,7 +102,7 @@ public class HannahTextGame {
 		
 		}
 		
-		System.out.println("Thanks For Playing " + " !\n"); // add in name
+		System.out.println("Thanks For Playing " + player1.name + " !\n"); 
 		System.out.println("Creater: Hannah Riedman\n Copyright Hannah Games 2016");
 
 		 
