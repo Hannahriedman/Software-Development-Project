@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class HannahTextGame {
 	
-	static String [] descriptions={  // Array to hold descriptions for locations
+	/**static String [] descriptions={  // Array to hold descriptions for locations
 			"You arrive at the creepy mansion in the dark of night.\n"
 			+ "There is a large door in front of you.", // outside 0
 			"You are now in the Foyer. There is a study to the East and sitting room\n"
@@ -22,8 +22,7 @@ public class HannahTextGame {
 			"You are now in the sitting room.", // sitting room 3
 			"You are now in the Library", // library 4		
 			"You have found a secret stairway after leaning on the bookcase." // secret stairway 5
-	};
-	
+	};**/ 
 	
 	static int location = 0; // static variable declarations 
 	static String name;
@@ -63,7 +62,9 @@ public class HannahTextGame {
 				"You have found a secret stairway after leaning on the bookcase.",
 				"no item");
 		
-		System.out.println("Murder Mystery Game!");  // intro and character customization
+		Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway};
+		
+		System.out.println("Murder Mystery Game!");  // Intro and character customization
 		System.out.println("********************\n");
 		System.out.print("What is your character's name?");
 		name = keyboard.nextLine();
@@ -131,7 +132,7 @@ public class HannahTextGame {
 
 		// this method takes the location and displays the description 
 		
-		System.out.println(descriptions[location]);
+		System.out.println(locations[location]);
 		return location;
 		
 	}
