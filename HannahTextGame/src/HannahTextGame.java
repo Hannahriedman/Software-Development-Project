@@ -24,10 +24,6 @@ public class HannahTextGame {
 			"You have found a secret stairway after leaning on the bookcase." // secret stairway 5
 	};
 	
-	Locale outside = new Locale(
-			"Outside",
-			"You arrive at the creepy mansion in the dark of night.\n",
-			"no item");
 	
 	static int location = 0; // static variable declarations 
 	static String name;
@@ -40,6 +36,13 @@ public class HannahTextGame {
 		String direction;  // variable declarations 
 		String userCommand;
 		
+		Locale outside = new Locale(
+				"Outside",
+				"You arrive at the creepy mansion in the dark of night.\n"
+				+ "There is a large door in front of you.",
+				"no item");
+		
+		
 		System.out.println("Murder Mystery Game!");  // intro and character customization
 		System.out.println("********************\n");
 		System.out.print("What is your character's name?");
@@ -47,7 +50,7 @@ public class HannahTextGame {
 		System.out.print("What is your character's gender?(m or f)");
 		gender = keyboard.nextLine();
 		
-		System.out.println(descriptions[0]);  // start of game
+		System.out.println(outside.descrip);  // start of game
 		System.out.println("*************************************");
 		System.out.println("Hello Detective " + name + "! You can navigate the game by using\n"
 				+ "N,E,S,W commands. Go North to the door to start the adventure!");
