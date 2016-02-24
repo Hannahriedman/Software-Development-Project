@@ -53,22 +53,36 @@ public class HannahTextGame {
 			"Rope",4);
 	static Locale secretStairway = new Locale(
 			"Secret Stairway",
-			"You have found a secret stairway after leaning on the bookcase.",
+			"You have found a secret stairway after leaning on the bookcase.\n"
+			+ "Go North to go on stairs",
 			"no item",5);
+	static Locale kitchen = new Locale(
+			"Kitchen",
+			"You take the stairs and they lead you to the Kitchen.\n"
+			+"The Kitchen looks messy like there might have been a fight.",
+			"Knife",6);
+	static Locale hall = new Locale(
+			"Hall",
+			"You Proceed down the hall from the Foyer,There is a door to the west.",
+			"no item",7);
+	static Locale diningRoom = new Locale(
+			"Dining Room",
+			"You are now in the Dining Room.",
+			"no item",8);
 	
-	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway};
-								// 0      1      2       3          4          5
+	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
+								// 0      1      2       3          4          5         6      7      8
 	static Object [][] map = {
 	           // NORTH, EAST, SOUTH, WEST 
 	           {locations[1], null, null, null }, // from outside: Foyer ---
-	           { null, locations[2], null, locations[3] }, // from Foyer: -study-sitting room 
+	           { null, locations[2], null, locations[3] }, // from Foyer: hall study-sitting room 
 	           { locations[4], null, null, locations[1] }, // from Study: library--Foyer
 	           { null, locations[1], null, null }, // from SitingRoom: -Foyer--
 	           { null, null, locations[2], locations[5] }, // from Library: --Study secret stairway
-	           { null, null, null, null }, // from SecretStairway: 
-	           { null, null, null, null }, // from :
-	           { null, null, null, null }, // from : 
-	           { null, null, null, null } // from:
+	           { locations[6], locations[4], null, null }, // from SecretStairway: kitchen library --
+	           { null, null, locations[5], null }, // from kitchen: --secret stairway-
+	           { null, null, locations[1], locations[8] }, // from hall: --Foyer diningRoom
+	           { null, locations[7], null, null } // from dining room: -hall--
 	};
 	
 	static Player player1 = new Player(playerName, location,gender, inventory);
