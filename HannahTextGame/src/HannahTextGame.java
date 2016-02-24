@@ -42,11 +42,11 @@ public class HannahTextGame {
 	static Locale study = new Locale(
 			"Study",
 			"You are now in the Study. To the North is a door.",
-			"Dictonary",2);
+			"no item",2);
 	static Locale sittingRoom = new Locale(
 			"Sitting Room",
 			"You are now in the Sitting Room.",
-			"CandleStick",3);
+			"Candlestick",3);
 	static Locale library = new Locale(
 			"Library",
 			"You are now in the Library.",
@@ -72,7 +72,19 @@ public class HannahTextGame {
 	
 	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
 								// 0      1      2       3          4          5         6      7      8
-	static Object [][] map = {
+	static int [][] map = {
+	        // NORTH, EAST, SOUTH, WEST 
+	           {1, -1, -1, -1 }, // from outside: Foyer ---
+	           { 7, 2, -1,3 }, // from Foyer: hall study-sitting room 
+	           { 4, -1, -1, 1 }, // from Study: library--Foyer
+	           { -1, 1, -1, -1 }, // from SitingRoom: -Foyer--
+	           { -1, -1, 2, 5 }, // from Library: --Study secret stairway
+	           { 6, 4, -1, -1 }, // from SecretStairway: kitchen library --
+	           { -1, -1, 5, -1 }, // from kitchen: --secret stairway-
+	           { -1, -1, 1, 8 }, // from hall: --Foyer diningRoom
+	           { -1, 7, -1, -1 } // from dining room: -hall--
+	};
+	/**static Object [][] map = {
 	           // NORTH, EAST, SOUTH, WEST 
 	           {locations[1], null, null, null }, // from outside: Foyer ---
 	           { null, locations[2], null, locations[3] }, // from Foyer: hall study-sitting room 
@@ -83,7 +95,7 @@ public class HannahTextGame {
 	           { null, null, locations[5], null }, // from kitchen: --secret stairway-
 	           { null, null, locations[1], locations[8] }, // from hall: --Foyer diningRoom
 	           { null, locations[7], null, null } // from dining room: -hall--
-	};
+	};**/
 	
 	static Player player1 = new Player(playerName, location,gender, inventory);
 	
@@ -137,16 +149,16 @@ public class HannahTextGame {
 		
 		if (userCommand.equals("N")) { 
 			direction = "North";
-			move(north,direction);
+			move(north);
 		} else if (userCommand.equals("E")) { 
 			direction = "East";
-			move(east,direction);
+			move(east);
 		} else if (userCommand.equals("S")) { 
 			direction = "South";
-			move(south,direction);
+			move(south);
 		} else if (userCommand.equals("W")) { 
 			direction = "West";
-			move(west,direction);
+			move(west);
 		} else if (userCommand.equals("Q")) {
 			return "quit"; 
 		} else if (userCommand.equals("M")) {
@@ -177,24 +189,23 @@ public class HannahTextGame {
 		
 	}
 	
-	public static Object from (int dir) {
-		int location = player1.location;
-		//Object locId = locations[location];
-		return map[location][dir];
+	public static int from (int dir) {
+		int currentLocation = player1.location;
+		
+		Object locId = locations[currentLocation];
+		System.out.println("this is locID:" +locId); // where player is currently 
+		
+		return map[currentLocation][dir];
 		
 	}
-	public static void move(int dir, String command) {
-		Object nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale instance
-		
-		int currentLocation = nextLocation.index;
-		if (nextLocation.equals(null)) {
-			System.out.println("You can not go " + command + " .");// add in stuff about you can not go here
+	public static void move(int dir) {
+		int nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale index
+	
+		if (nextLocation != -1) {
+			System.out.println(locations[nextLocation]);
+			player1.location=nextLocation;// add in stuff about you can not go here
 		} else {
-			System.out.println(nextLocation);
-			player1.location = Location;
-			/** add in stuff about changing currentlocation in player to next
-			/
-			 */
+			System.out.println("You can not go that way.");
 			 
 		}
 	}
@@ -243,7 +254,9 @@ public class HannahTextGame {
 	}
 	
 	public static void showMap () {
-		System.out.println();
+		System.out.println("----------N---------");
+		System.out.println("----------|---------");
+		System.out.println("--------Start-------");
 	}
 	
 	public void takeItem (Object Location) {
