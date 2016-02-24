@@ -115,7 +115,7 @@ public class HannahTextGame {
 			
 			System.out.println("Enter a command: ");
 			userCommand = keyboard.nextLine().toUpperCase();
-			// makes input case sensititive.
+			// makes input case in-sensititive.
 		
 			direction = processDirection(userCommand); // changes input into directions/commands
 		
@@ -141,23 +141,23 @@ public class HannahTextGame {
 		
 		if (userCommand.equals("N")) { 
 			direction = "North";
-			move(north);
+			move(north,direction);
 		} else if (userCommand.equals("E")) { 
 			direction = "East";
-			move(east);
+			move(east,direction);
 		} else if (userCommand.equals("S")) { 
 			direction = "South";
-			move(south);
+			move(south,direction);
 		} else if (userCommand.equals("W")) { 
 			direction = "West";
-			move(west);
+			move(west,direction);
 		} else if (userCommand.equals("Q")) {
 			return "quit"; 
 		} else if (userCommand.equals("M")) {
 			showMap();
 			return "start over"; 
 		} else if (userCommand.equals("T")) {
-			//takeItem();
+			takeItem();
 			return "start over"; 
 		} else if (userCommand.equals("H")) {
 			System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
@@ -178,14 +178,14 @@ public class HannahTextGame {
 		return map[currentLocation][dir];
 		
 	}
-	public static void move(int dir) {
+	public static void move(int dir,String command) {
 		int nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale index
 	
 		if (nextLocation != -1) {
 			System.out.println(locations[nextLocation]);
-			player1.location=nextLocation;// add in stuff about you can not go here
+			player1.location=nextLocation;
 		} else {
-			System.out.println("You can not go that way.");
+			System.out.println("You can not go " + command + ".");
 			 
 		}
 	}
@@ -203,11 +203,16 @@ public class HannahTextGame {
 		System.out.println("-----------Start-------");
 	}
 	
-	public void takeItem (Object Location) {
+	public static void takeItem () {
+		//int currentloc = player1.location;
 		
-		//if(Locale.item.equals("no item")) {
-		//	System.out.println("There is no item here!");
-		//}
+		// System.out.print(locations[currentloc]);
+		if(Locale.item.equals("no item")) {
+			System.out.println("There is no item here!");
+		} else {
+			System.out.println("okay that didnt work");
+			
+		}
 	}
 }
 	
