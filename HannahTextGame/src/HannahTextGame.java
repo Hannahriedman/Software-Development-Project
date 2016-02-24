@@ -33,42 +33,43 @@ public class HannahTextGame {
 			"Outside",
 			"You arrive at the creepy mansion in the dark of night.\n"
 			+ "There is a large door in front of you.",
-			"no item",0);
+			"no item");
 	static Locale foyer = new Locale(
 			"Foyer",
 			"You are now in the Foyer. There is a study to the East and sitting room\n"
-			+ "to the West.",
-			"no item",1);
+			+ "to the West. To the North is a hall.",
+			"no item");
 	static Locale study = new Locale(
 			"Study",
 			"You are now in the Study. To the North is a door.",
-			"no item",2);
+			"no item");
 	static Locale sittingRoom = new Locale(
 			"Sitting Room",
 			"You are now in the Sitting Room.",
-			"Candlestick",3);
+			"Candlestick");
 	static Locale library = new Locale(
 			"Library",
 			"You are now in the Library.",
-			"Rope",4);
+			"Rope");
 	static Locale secretStairway = new Locale(
 			"Secret Stairway",
 			"You have found a secret stairway after leaning on the bookcase.\n"
 			+ "Go North to go on stairs",
-			"no item",5);
+			"no item");
 	static Locale kitchen = new Locale(
 			"Kitchen",
 			"You take the stairs and they lead you to the Kitchen.\n"
-			+"The Kitchen looks messy like there might have been a fight.",
-			"Knife",6);
+			+"The Kitchen looks messy like there might have been a fight."
+			+ "There is a door to the south.",
+			"Knife");
 	static Locale hall = new Locale(
 			"Hall",
 			"You Proceed down the hall from the Foyer,There is a door to the west.",
-			"no item",7);
+			"no item");
 	static Locale diningRoom = new Locale(
 			"Dining Room",
-			"You are now in the Dining Room.",
-			"no item",8);
+			"You are now in the Dining Room.There is a door to the north.",
+			"no item");
 	
 	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
 								// 0      1      2       3          4          5         6      7      8
@@ -80,22 +81,10 @@ public class HannahTextGame {
 	           { -1, 1, -1, -1 }, // from SitingRoom: -Foyer--
 	           { -1, -1, 2, 5 }, // from Library: --Study secret stairway
 	           { 6, 4, -1, -1 }, // from SecretStairway: kitchen library --
-	           { -1, -1, 5, -1 }, // from kitchen: --secret stairway-
+	           { -1, 5, 6, -1 }, // from kitchen: -secret stariway kitchen-
 	           { -1, -1, 1, 8 }, // from hall: --Foyer diningRoom
-	           { -1, 7, -1, -1 } // from dining room: -hall--
+	           { 6, 7, -1, -1 } // from dining room: kitchen hall--
 	};
-	/**static Object [][] map = {
-	           // NORTH, EAST, SOUTH, WEST 
-	           {locations[1], null, null, null }, // from outside: Foyer ---
-	           { null, locations[2], null, locations[3] }, // from Foyer: hall study-sitting room 
-	           { locations[4], null, null, locations[1] }, // from Study: library--Foyer
-	           { null, locations[1], null, null }, // from SitingRoom: -Foyer--
-	           { null, null, locations[2], locations[5] }, // from Library: --Study secret stairway
-	           { locations[6], locations[4], null, null }, // from SecretStairway: kitchen library --
-	           { null, null, locations[5], null }, // from kitchen: --secret stairway-
-	           { null, null, locations[1], locations[8] }, // from hall: --Foyer diningRoom
-	           { null, locations[7], null, null } // from dining room: -hall--
-	};**/
 	
 	static Player player1 = new Player(playerName, location,gender, inventory);
 	
@@ -105,24 +94,25 @@ public class HannahTextGame {
 		String direction;  // variable declarations 
 		String userCommand;
 		
-		System.out.println("Murder Mystery Game!");  // Intro and character customization
+		System.out.println("Murder Mystery Game!");  // Title Screen
 		System.out.println("********************\n");
-		System.out.print("What is your character's name?");
+		
+		System.out.print("What is your character's name?"); // Character details
 		player1.name = keyboard.nextLine();
 		System.out.print("What is your character's gender?(m or f)");
-		player1.gender = keyboard.nextLine(); // test to check gender
-		System.out.println(player1.gender);
+		player1.gender = keyboard.nextLine(); 
+		
 		System.out.println(locations[0]); // start of game
 		System.out.println("*************************************");
 		System.out.println("Hello Detective " + player1.name +"! You can navigate the game by using\n" 
-				+ "N,E,S,W commands. Go North to the door to start the adventure!");
+				+ "N,E,S,W commands.Type H to get help, Go North to the door to start the adventure!");
 		
 		while (true) {
 			
 			System.out.println("Enter a command: ");
 			userCommand = keyboard.nextLine().toUpperCase();
 			// makes input case sensititive.
-			System.out.println("You entered: " + userCommand);
+		
 			direction = processDirection(userCommand); // changes input into directions/commands
 		
 			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
@@ -169,7 +159,7 @@ public class HannahTextGame {
 			return "start over"; 
 		} else if (userCommand.equals("H")) {
 			System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
-					+ "Type Q to quit the game.");
+					+ "Type 'Q' to quit the game, 'M' to see Map, and 'T' to take item.");
 			return "start over";
 		} else {
 			System.out.println("Invalid command!\n");
@@ -191,9 +181,6 @@ public class HannahTextGame {
 	
 	public static int from (int dir) {
 		int currentLocation = player1.location;
-		
-		Object locId = locations[currentLocation];
-		System.out.println("this is locID:" +locId); // where player is currently 
 		
 		return map[currentLocation][dir];
 		
@@ -254,16 +241,23 @@ public class HannahTextGame {
 	}
 	
 	public static void showMap () {
-		System.out.println("----------N---------");
-		System.out.println("----------|---------");
-		System.out.println("--------Start-------");
+		System.out.println("*********THE MAP*******");
+		System.out.println("NOTE:there is one secret\nlocation not on map.---");
+		System.out.println("-----------------------");
+		System.out.println("-Kitchen---------------");
+		System.out.println("---|-------------------");
+		System.out.println("-DiningRm==Hall--Libray");
+		System.out.println("------------|-------|--");
+		System.out.println("SittingRm==Foyer==Study");
+		System.out.println("-------------|---------");
+		System.out.println("-----------Start-------");
 	}
 	
 	public void takeItem (Object Location) {
 		
-		if(Locale.item.equals("no item")) {
-			System.out.println("There is no item here!");
-		}
+		//if(Locale.item.equals("no item")) {
+		//	System.out.println("There is no item here!");
+		//}
 	}
 }
 	
