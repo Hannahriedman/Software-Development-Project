@@ -40,39 +40,38 @@ public class HannahTextGame {
 			"no item");
 	static Locale foyer =          new Locale(
 			"Foyer",
-			"You are now in the Foyer. There is a study to the East and sitting room\n"
+			"There is a study to the East and sitting room\n"
 			+ "to the West. To the North is a hall.",
 			"Map");
 	static Locale study =          new Locale(
 			"Study",
-			"You are now in the Study. To the North is a door.",
+			"To the North is a door.",
 			"no item");
 	static Locale sittingRoom =    new Locale(
 			"Sitting Room",
-			"You are now in the Sitting Room.",
+			"The curtains look ripped.",
 			"Candlestick");
 	static Locale library =        new Locale(
 			"Library",
-			"You are now in the Library.",
+			"The walls are lined with books.",
 			"Rope");
 	static Locale secretStairway = new Locale(
 			"Secret Stairway",
-			"You have found a secret stairway after leaning on the bookcase.\n"
-			+ "Go North to go on stairs",
+			"I wonder where it leads. Go North to go on stairs\n"
+			+ "or East to go to the Library.",
 			"no item");
 	static Locale kitchen =        new Locale(
 			"Kitchen",
-			"You take the stairs and they lead you to the Kitchen.\n"
-			+"The Kitchen looks messy like there might have been a fight."
+			"The Kitchen looks messy like there might have been a fight."
 			+ "There is a door to the south.",
 			"Knife");
 	static Locale hall =           new Locale(
 			"Hall",
-			"You Proceed down the hall from the Foyer,There is a door to the west.",
+			"There is a door to the west.",
 			"no item");
 	static Locale diningRoom =     new Locale(
 			"Dining Room",
-			"You are now in the Dining Room.There is a door to the north.",
+			"There is a door to the north.",
 			"no item");
 	
 	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
@@ -121,6 +120,7 @@ public class HannahTextGame {
 
 	}
 	
+	// messages methods
 	public static void introMessage() {
 		
 		System.out.println("Murder Mystery Game!");  // Title Screen
@@ -137,7 +137,6 @@ public class HannahTextGame {
 		System.out.println("Hello Detective " + player1.name +"! You can navigate the game by using\n" 
 				+ "N,E,S,W commands.Type H to get help, Go North to the door to start the adventure!");
 	}
-	
 	public static void byeMessage() {
 		
 		System.out.println("Thanks For Playing " + player1.name + " !\n"); 
@@ -147,6 +146,7 @@ public class HannahTextGame {
 		keyboard.close();
 	}
 	
+	// small method for player gender
 	public static void playerGender(String gender) {
 		
 		if (gender.toUpperCase().equals("F")) {
@@ -157,7 +157,9 @@ public class HannahTextGame {
 			player1.gender = "Gender Neutral";
 		};
 	}
-	public static String processDirection(String userCommand) {
+	
+	// user input method
+    public static String processDirection(String userCommand) {
 		String direction = null;
 		
 		if (userCommand.equals("N")) { 
@@ -192,7 +194,7 @@ public class HannahTextGame {
 		return direction;
 	}
 	
-	
+	// navigation methods
 	public static int from (int dir) {
 		int currentLocation = player1.location;
 		
@@ -211,6 +213,7 @@ public class HannahTextGame {
 		}
 	}
 	
+	// specific command methods
 	public static void showMap () {
 			
 			if (player1.inventory[0] != null) {
@@ -230,7 +233,6 @@ public class HannahTextGame {
 		
 		
 	}
-	
 	public static void takeItem () {
 		Object currentloc = locations[player1.location];
 		
