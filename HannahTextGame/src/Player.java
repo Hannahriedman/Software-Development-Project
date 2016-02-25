@@ -11,15 +11,9 @@ public class Player {
 		this.name      = name;
 		this.location  = loc;
 		this.score     = 0;
-		this.inventory = inventory;
 		this.gender    = gender;
-		/**if (gender.equals("f")) {
-			this.gender = "Female";
-		} else if (gender.equals("m")){
-			this.gender = "Male";
-		} else {
-			this.gender = "Gender Neutral";
-		};**/ // for some reason this has an exception so need to TODO fix this
+		this.inventory = inventory;
+		
 		
 	}
 	

@@ -21,37 +21,37 @@ public class HannahTextGame {
 	
 	// Player variables
 	static String   gender;
-	static int      location = 0;  
+	static int      location  = 0;  
 	static String   playerName;
-	static String[] inventory= new String[4];
+	static String[] inventory = new String[4];
 
 	// Cardinal directions
 	static int north = 0;
-	static int east = 1;
+	static int east  = 1;
 	static int south = 2;
-	static int west = 3;
+	static int west  = 3;
 	
 	static Scanner keyboard = new Scanner(System.in);
 	
-	static Locale outside = new Locale(
+	static Locale outside =        new Locale(
 			"Outside",
 			"You arrive at the creepy mansion in the dark of night.\n"
 			+ "There is a large door in front of you.",
 			"no item");
-	static Locale foyer = new Locale(
+	static Locale foyer =          new Locale(
 			"Foyer",
 			"You are now in the Foyer. There is a study to the East and sitting room\n"
 			+ "to the West. To the North is a hall.",
 			"Map");
-	static Locale study = new Locale(
+	static Locale study =          new Locale(
 			"Study",
 			"You are now in the Study. To the North is a door.",
 			"no item");
-	static Locale sittingRoom = new Locale(
+	static Locale sittingRoom =    new Locale(
 			"Sitting Room",
 			"You are now in the Sitting Room.",
 			"Candlestick");
-	static Locale library = new Locale(
+	static Locale library =        new Locale(
 			"Library",
 			"You are now in the Library.",
 			"Rope");
@@ -60,17 +60,17 @@ public class HannahTextGame {
 			"You have found a secret stairway after leaning on the bookcase.\n"
 			+ "Go North to go on stairs",
 			"no item");
-	static Locale kitchen = new Locale(
+	static Locale kitchen =        new Locale(
 			"Kitchen",
 			"You take the stairs and they lead you to the Kitchen.\n"
 			+"The Kitchen looks messy like there might have been a fight."
 			+ "There is a door to the south.",
 			"Knife");
-	static Locale hall = new Locale(
+	static Locale hall =           new Locale(
 			"Hall",
 			"You Proceed down the hall from the Foyer,There is a door to the west.",
 			"no item");
-	static Locale diningRoom = new Locale(
+	static Locale diningRoom =     new Locale(
 			"Dining Room",
 			"You are now in the Dining Room.There is a door to the north.",
 			"no item");
@@ -98,18 +98,7 @@ public class HannahTextGame {
 		String direction;  // variable declarations 
 		String userCommand;
 		
-		System.out.println("Murder Mystery Game!");  // Title Screen
-		System.out.println("********************\n");
-		
-		System.out.print("What is your character's name?"); // Character details
-		player1.name = keyboard.nextLine();
-		System.out.print("What is your character's gender?(m or f)");
-		player1.gender = keyboard.nextLine(); 
-		
-		System.out.println(locations[0]); // start of game
-		System.out.println("*************************************");
-		System.out.println("Hello Detective " + player1.name +"! You can navigate the game by using\n" 
-				+ "N,E,S,W commands.Type H to get help, Go North to the door to start the adventure!");
+		introMessage(); // method starts game and gets input from Player.
 		
 		while (true) {
 			
@@ -128,14 +117,46 @@ public class HannahTextGame {
 		
 		}
 		
+		byeMessage();
+
+	}
+	
+	public static void introMessage() {
+		
+		System.out.println("Murder Mystery Game!");  // Title Screen
+		System.out.println("********************\n");
+		
+		System.out.print("What is your character's name?"); // Character details
+		player1.name = keyboard.nextLine();
+		System.out.print("What is your character's gender?(m or f)");
+		gender = keyboard.nextLine(); 
+		playerGender(gender); // converts input into actual gender
+		
+		System.out.println(locations[0]); // start of game
+		System.out.println("*************************************");
+		System.out.println("Hello Detective " + player1.name +"! You can navigate the game by using\n" 
+				+ "N,E,S,W commands.Type H to get help, Go North to the door to start the adventure!");
+	}
+	
+	public static void byeMessage() {
+		
 		System.out.println("Thanks For Playing " + player1.name + " !\n"); 
 		System.out.println("Creater: Hannah Riedman\n Copyright Hannah Games 2016");
 
 		 
 		keyboard.close();
-
 	}
 	
+	public static void playerGender(String gender) {
+		
+		if (gender.toUpperCase().equals("F")) {
+			player1.gender = "Female";
+		} else if (gender.toUpperCase().equals("M")){
+			player1.gender = "Male";
+		} else {
+			player1.gender = "Gender Neutral";
+		};
+	}
 	public static String processDirection(String userCommand) {
 		String direction = null;
 		
