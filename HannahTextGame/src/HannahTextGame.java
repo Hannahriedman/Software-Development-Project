@@ -191,7 +191,6 @@ public class HannahTextGame {
 	}
 	
 	public static void showMap () {
-		//for (int i=0;i<player1.inventory.length;i++) {
 			
 			if (player1.inventory[0] != null) {
 				System.out.println("*********THE MAP*******");
@@ -204,32 +203,37 @@ public class HannahTextGame {
 				System.out.println("SittingRm==Foyer==Study");
 				System.out.println("-------------|---------");
 				System.out.println("-----------Start-------");
+			} else {
+				System.out.println("You do not have the map!");
 			}
-		//}
+		
 		
 	}
 	
 	public static void takeItem () {
 		Object currentloc = locations[player1.location];
 		
-		//System.out.print(currentloc);
 		if(currentloc.toString().contains("no item")) {
 			System.out.println("There is no item here!");
 		} else if (currentloc.toString().contains("Map")) {
-			System.out.println("You now have a Map.Type 'M' to use it.");
 			player1.inventory[0] = "Map";
 			foyer.item = "no item";
+			player1.score += 5;
+			System.out.println("You now have a Map.Type 'M' to use it.");
 		} else if (currentloc.toString().contains("Knife")) {
 			player1.inventory[1] = "Knife";
 			kitchen.item = "no item";
+			player1.score += 5;
 			System.out.println("You now have a Knife.");
 		} else if (currentloc.toString().contains("Rope")) {
 			player1.inventory[2] = "Rope";
 			library.item = "no item";
+			player1.score += 5;
 			System.out.println("You now have Rope.");
 		} else if (currentloc.toString().contains("Candlestick")) {
 			player1.inventory[3] = "Candlestick";
 			sittingRoom.item = "no item";
+			player1.score += 5;
 			System.out.println("You now have a CandleStick.");
 		}
 		
