@@ -13,6 +13,7 @@ public class Locale {
 
 	@Override
 	public String toString() {
-		return  this.descrip + "" + this.item;
+		return  this.descrip + " There is a " + this.item 
+				+ " Here.";
 	}
 }
