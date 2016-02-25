@@ -204,13 +204,13 @@ public class HannahTextGame {
 	}
 	
 	public static void takeItem () {
-		//int currentloc = player1.location;
+		Object currentloc = locations[player1.location];
 		
-		// System.out.print(locations[currentloc]);
-		if(Locale.item.equals("no item")) {
+		System.out.print(currentloc);
+		if(currentloc.toString().contains("no item")) {
 			System.out.println("There is no item here!");
 		} else {
-			System.out.println("okay that didnt work");
+			System.out.println("There is a" + currentloc.toString().item);
 			
 		}
 	}

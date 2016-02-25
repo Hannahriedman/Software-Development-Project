@@ -10,12 +10,9 @@ public class Locale {
 		this.descrip = descrip;
 		this.item    = item;
 	}
-	public String seeItem() {
-		return this.item;
-	}
-	
+
 	@Override
 	public String toString() {
-		return  this.descrip; 
+		return  this.descrip + "" + this.item;
 	}
 }
