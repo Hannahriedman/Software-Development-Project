@@ -23,7 +23,7 @@ public class HannahTextGame {
 	static String   gender;
 	static int      location = 0;  
 	static String   playerName;
-	static String[] inventory;
+	static String[] inventory= new String[4];
 
 	// Cardinal directions
 	static int north = 0;
@@ -90,7 +90,7 @@ public class HannahTextGame {
 	           { 6, 7, -1, -1 } // from dining room: kitchen hall--
 	};
 	
-	static Player player1 = new Player(playerName, location,gender, inventory);
+	static Player player1 = new Player(playerName,location,gender,inventory);
 	
 
 	public static void main(String[] args) {
