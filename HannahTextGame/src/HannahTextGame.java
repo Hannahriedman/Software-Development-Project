@@ -273,6 +273,11 @@ public class HannahTextGame {
 			System.out.println(trail.currentCrumb());
 		}**/
 	}
-
+	public static void dropItem () {
+		
+	}
+	public static void backtrack () {
+		
+	}
 }
 	
