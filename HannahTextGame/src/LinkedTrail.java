@@ -7,13 +7,15 @@ public class LinkedTrail implements BreadcrumbTrail {
 	public LinkedTrail() {
 		this.top = null;
 	}
-	
-	public void pickupCrumb(Object x) {
+	/**Push method
+	 * @param takes in current location
+	 */
+	public void dropCrumb(Object x) {
 		Breadcrumb newCrumb = new Breadcrumb(x, this.top);
 		this.top = newCrumb;
 	}
 	
-	public void dropCrumb() {
+	public void pickupCrumb() {
 		this.top = this.top.link;
 	}
 	

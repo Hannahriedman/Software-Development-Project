@@ -1,11 +1,11 @@
 
 public interface BreadcrumbTrail {
 
-	public void pickupCrumb(Object x);
+	public void dropCrumb(Object x); // push
 	
-	public void dropCrumb();
+	public void pickupCrumb(); // pop
 	
-	public Object currentCrumb();
+	public Object currentCrumb(); //top
 	
-	public boolean hasMoreCrumbs();
+	public boolean hasMoreCrumbs(); //isEmpty
 }
