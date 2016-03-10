@@ -183,6 +183,12 @@ public class HannahTextGame {
 		} else if (userCommand.equals("T")) {
 			takeItem();
 			return "start over"; 
+		} else if (userCommand.equals("B")) {
+			backtrack();
+			return "start over"; 
+		} else if (userCommand.equals("D")) {
+			dropItem();
+			return "start over"; 
 		} else if (userCommand.equals("P")) {
 			history(); 
 			return "start over"; 
@@ -279,7 +285,8 @@ public class HannahTextGame {
 	}
 	public static void backtrack () {
 		trail.pickupCrumb();
-		player1.location = trail.currentCrumb();
+		System.out.println(trail.currentCrumb());
+		//player1.location = trail.currentCrumb();
 	}
 }
 	
