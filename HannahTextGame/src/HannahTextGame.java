@@ -91,6 +91,7 @@ public class HannahTextGame {
 	
 	static Player player1 = new Player(playerName,location,gender,inventory);
 	
+	static LinkedTrail trail = new LinkedTrail();
 
 	public static void main(String[] args) {
 		
@@ -206,6 +207,7 @@ public class HannahTextGame {
 	
 		if (nextLocation != -1) {
 			System.out.println(locations[nextLocation]);
+			trail.dropCrumb(player1.location);
 			player1.location=nextLocation;
 		} else {
 			System.out.println("You can not go " + command + ".");
