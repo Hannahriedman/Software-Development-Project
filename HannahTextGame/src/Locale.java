@@ -16,4 +16,8 @@ public class Locale {
 		return  "You are now in the " + this.name + "\n" +  this.descrip + 
 				"\nThere is a " + this.item + " Here.";
 	}
+	
+	public String name () {
+		return this.name;
+	}
 }

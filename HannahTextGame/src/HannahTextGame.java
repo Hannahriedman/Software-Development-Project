@@ -209,8 +209,8 @@ public class HannahTextGame {
 		int nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale index
 	
 		if (nextLocation != -1) {
+			trail.dropCrumb(locations[player1.location]); // drops crumb at last location
 			System.out.println(locations[nextLocation]);
-			trail.dropCrumb(player1.location);
 			player1.location=nextLocation;
 		} else {
 			System.out.println("You can not go " + command + ".");
@@ -267,7 +267,8 @@ public class HannahTextGame {
 		
 	}
 	public static void history () {
-		System.out.println("Previous Moves: " + trail.currentCrumb());
+		Object lastLocation = trail.currentCrumb();
+		System.out.println("Previous Moves: " + ((Locale) lastLocation).name());
 		/**for (int i = 0; trail.hasMoreCrumbs();i--) {
 			trail.indexof(i); 
 			System.out.println(trail.currentCrumb());
@@ -277,7 +278,8 @@ public class HannahTextGame {
 		
 	}
 	public static void backtrack () {
-		
+		trail.pickupCrumb();
+		player1.location = trail.currentCrumb();
 	}
 }
 	
