@@ -183,7 +183,10 @@ public class HannahTextGame {
 		} else if (userCommand.equals("T")) {
 			takeItem();
 			return "start over"; 
-		} else if (userCommand.equals("H")) {
+		} else if (userCommand.equals("P")) {
+			history(); 
+			return "start over"; 
+		}else if (userCommand.equals("H")) {
 			System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
 					+ "Type 'Q' to quit the game, 'M' to see Map, and 'T' to take item.");
 			return "start over";
@@ -263,5 +266,13 @@ public class HannahTextGame {
 		}
 		
 	}
+	public static void history () {
+		System.out.println("Previous Moves: " + trail.currentCrumb());
+		/**for (int i = 0; trail.hasMoreCrumbs();i--) {
+			trail.indexof(i); 
+			System.out.println(trail.currentCrumb());
+		}**/
+	}
+
 }
 	
