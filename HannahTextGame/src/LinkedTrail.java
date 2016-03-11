@@ -11,22 +11,31 @@ public class LinkedTrail implements BreadcrumbTrail {
 	 * Push method
 	 * @param takes in current location
 	 */
-	public void dropCrumb(Object x) {
+	public void dropCrumb(int x) {
 		Breadcrumb newCrumb = new Breadcrumb(x, this.top);
 		this.top = newCrumb;
+			
 	}
 	/**
 	 * Pop method
 	 */
 	
 	public void pickupCrumb() {
-		this.top = this.top.link;
+		if (this.top != null) {
+			this.top = this.top.link;
+		} else {
+			System.out.println("You cannot backtrack any further");
+		}
+		
 	}
 	/**
 	 * Top method
 	 */
-	public Object currentCrumb() {
-		return top.data;
+	public int currentCrumb() {
+		if (this.top != null) {
+			return top.data;
+		}
+			return -1;
 	}
 	/**
 	 * IsNotEmpty method
@@ -38,9 +47,9 @@ public class LinkedTrail implements BreadcrumbTrail {
 }
 
 class Breadcrumb {
-	Object data;
+	int data;
 	Breadcrumb link;
-	Breadcrumb(Object x,Breadcrumb n) {
+	Breadcrumb(int x,Breadcrumb n) {
 		this.data = x;
 		this.link = n;
 	}
