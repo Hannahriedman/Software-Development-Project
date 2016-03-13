@@ -82,6 +82,7 @@ public class HannahTextGame {
 	
 	static Locale [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
 								// 0      1      2       3          4          5         6      7      8
+	
 	static int [][] map = {
 	        // NORTH, EAST, SOUTH, WEST 
 	           {1, -1, -1, -1 }, // from outside: Foyer ---
@@ -193,7 +194,7 @@ public class HannahTextGame {
 			backtrack();
 			return "start over"; 
 		} else if (userCommand.equals("D")) {
-			dropItem();
+			///player1.drop(locations);
 			return "start over"; 
 		} else if (userCommand.equals("P")) {
 			history(); 
@@ -250,36 +251,6 @@ public class HannahTextGame {
 		
 		
 	}
-	/**
-	public static void takeItem () {
-		Object currentloc = locations[player1.location];
-		
-		if(currentloc.toString().contains("no item")) {
-			System.out.println("There is no item here!");
-		} else if (currentloc.toString().contains("Map")) {
-			player1.inventory[0] = "Map";
-			foyer.item = "no item";
-			player1.score += 5;
-			System.out.println("You now have a Map.Type 'M' to use it.");
-		} else if (currentloc.toString().contains("Knife")) {
-			player1.inventory[1] = "Knife";
-			kitchen.item = "no item";
-			player1.score += 5;
-			System.out.println("You now have a Knife.");
-		} else if (currentloc.toString().contains("Rope")) {
-			player1.inventory[2] = "Rope";
-			library.item = "no item";
-			player1.score += 5;
-			System.out.println("You now have Rope.");
-		} else if (currentloc.toString().contains("Candlestick")) {
-			player1.inventory[3] = "Candlestick";
-			sittingRoom.item = "no item";
-			player1.score += 5;
-			System.out.println("You now have a CandleStick.");
-		}
-		
-	}**/
-	
 	
 	public static void history () {
 		Object lastLocation = locations[trail.currentCrumb()];
@@ -289,10 +260,8 @@ public class HannahTextGame {
 			System.out.println(trail.currentCrumb());
 		}**/
 	}
-	public static void dropItem () {
 	
-		
-	}
+	
 	public static void backtrack () {
 		System.out.println("Line 1!"); // using to test where code fails
 		trail.pickupCrumb();
@@ -306,5 +275,11 @@ public class HannahTextGame {
 		
 		
 	}
+	
+		
+		
+		
+		
 }
+
 	
