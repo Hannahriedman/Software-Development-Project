@@ -48,9 +48,10 @@ public class Player {
 			for (int i=0;i<this.inventory.size();i++){
 				checkItem =this.inventory.get(i);
 				if (checkItem.name.equals(itemToDrop)) {
-					System.out.print("It works");
-					
-				}
+					System.out.print("You have dropped the " + itemToDrop);
+					currentloc.item = checkItem;
+					this.inventory.remove(i);
+				} 
 				
 			}
 		} else {
