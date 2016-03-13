@@ -33,10 +33,10 @@ public class HannahTextGame {
 	
 	static Scanner keyboard = new Scanner(System.in);
 	
-	static Item map1 = new Item("Map","This is a map of the mansion.Type M to use it.");
-	static Item candlestick = new Item("Candlestick","This is a candlestick.");
-	static Item rope = new Item("Rope","This is a thick braided rope.");
-	static Item knife = new Item("Knife","This knife is bloody.");
+	static Item map1 = new Item("map","This is a map of the mansion.Type M to use it.");
+	static Item candlestick = new Item("candlestick","This is a candlestick.");
+	static Item rope = new Item("rope","This is a thick braided rope.");
+	static Item knife = new Item("knife","This knife is bloody.");
 	
 	static Locale outside =        new Locale(
 			"Outside",
@@ -194,7 +194,7 @@ public class HannahTextGame {
 			backtrack();
 			return "start over"; 
 		} else if (userCommand.equals("D")) {
-			///player1.drop(locations);
+			player1.drop(locations);
 			return "start over"; 
 		} else if (userCommand.equals("P")) {
 			history(); 
