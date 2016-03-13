@@ -23,6 +23,7 @@ public class LinkedTrail implements BreadcrumbTrail {
 	public void pickupCrumb() {
 		if (this.top != null) {
 			this.top = this.top.link;
+			System.out.println("backtrack worked");
 		} else {
 			System.out.println("You cannot backtrack any further");
 		}

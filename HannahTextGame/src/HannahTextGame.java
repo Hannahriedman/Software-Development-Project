@@ -33,46 +33,55 @@ public class HannahTextGame {
 	
 	static Scanner keyboard = new Scanner(System.in);
 	
+	static Item map1 = new Item("Map","This is a map of the mansion.Type M to use it.");
+	static Item candlestick = new Item("Candlestick","This is a candlestick.");
+	static Item rope = new Item("Rope","This is a thick braided rope.");
+	static Item knife = new Item("Knife","This knife is bloody.");
+	static Item noItem = new Item("no item","There is no item here");
+	
 	static Locale outside =        new Locale(
 			"Outside",
 			"You arrive at the creepy mansion in the dark of night.\n"
 			+ "There is a large door in front of you.",
-			"no item");
+			noItem);
 	static Locale foyer =          new Locale(
 			"Foyer",
 			"There is a study to the East and sitting room\n"
 			+ "to the West. To the North is a hall.",
-			"Map");
+			map1);
 	static Locale study =          new Locale(
 			"Study",
 			"To the North is a door.",
-			"no item");
+			noItem);
 	static Locale sittingRoom =    new Locale(
 			"Sitting Room",
 			"The curtains look ripped.",
-			"Candlestick");
+			candlestick);
 	static Locale library =        new Locale(
 			"Library",
 			"The walls are lined with books.",
-			"Rope");
+			noItem);
 	static Locale secretStairway = new Locale(
 			"Secret Stairway",
 			"I wonder where it leads. Go North to go on stairs\n"
 			+ "or East to go to the Library.",
-			"no item");
+			noItem);
 	static Locale kitchen =        new Locale(
 			"Kitchen",
 			"The Kitchen looks messy like there might have been a fight."
 			+ "There is a door to the south.",
-			"Knife");
+			knife);
 	static Locale hall =           new Locale(
 			"Hall",
 			"There is a door to the west.",
-			"no item");
+			noItem);
 	static Locale diningRoom =     new Locale(
 			"Dining Room",
 			"There is a door to the north.",
-			"no item");
+			noItem);
+	
+	
+	
 	
 	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
 								// 0      1      2       3          4          5         6      7      8
@@ -272,6 +281,8 @@ public class HannahTextGame {
 		}
 		
 	}
+	
+	
 	public static void history () {
 		Object lastLocation = locations[trail.currentCrumb()];
 		System.out.println("Previous Moves: " + ((Locale) lastLocation).name());
@@ -285,11 +296,17 @@ public class HannahTextGame {
 		
 	}
 	public static void backtrack () {
-		System.out.println("LIne 1!");
+		System.out.println("Line 1!"); // using to test where code fails
 		trail.pickupCrumb();
-		System.out.println("LIne 2!");
-		System.out.println(locations[trail.currentCrumb()]);
-		player1.location = trail.currentCrumb();
+		if (trail.currentCrumb() != -1) {
+			System.out.println("Line 2!");
+			System.out.println(locations[trail.currentCrumb()]);
+			player1.location = trail.currentCrumb();
+		}
+		
+		
+		
+		
 	}
 }
 	
