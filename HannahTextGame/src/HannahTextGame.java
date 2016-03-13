@@ -37,13 +37,12 @@ public class HannahTextGame {
 	static Item candlestick = new Item("Candlestick","This is a candlestick.");
 	static Item rope = new Item("Rope","This is a thick braided rope.");
 	static Item knife = new Item("Knife","This knife is bloody.");
-	static Item noItem = new Item("no item","There is no item here");
 	
 	static Locale outside =        new Locale(
 			"Outside",
 			"You arrive at the creepy mansion in the dark of night.\n"
 			+ "There is a large door in front of you.",
-			noItem);
+			null);
 	static Locale foyer =          new Locale(
 			"Foyer",
 			"There is a study to the East and sitting room\n"
@@ -52,7 +51,7 @@ public class HannahTextGame {
 	static Locale study =          new Locale(
 			"Study",
 			"To the North is a door.",
-			noItem);
+			null);
 	static Locale sittingRoom =    new Locale(
 			"Sitting Room",
 			"The curtains look ripped.",
@@ -60,12 +59,12 @@ public class HannahTextGame {
 	static Locale library =        new Locale(
 			"Library",
 			"The walls are lined with books.",
-			noItem);
+			null);
 	static Locale secretStairway = new Locale(
 			"Secret Stairway",
 			"I wonder where it leads. Go North to go on stairs\n"
 			+ "or East to go to the Library.",
-			noItem);
+			null);
 	static Locale kitchen =        new Locale(
 			"Kitchen",
 			"The Kitchen looks messy like there might have been a fight."
@@ -74,16 +73,14 @@ public class HannahTextGame {
 	static Locale hall =           new Locale(
 			"Hall",
 			"There is a door to the west.",
-			noItem);
+			null);
 	static Locale diningRoom =     new Locale(
 			"Dining Room",
 			"There is a door to the north.",
-			noItem);
+			null);
 	
 	
-	
-	
-	static Object [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
+	static Locale [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
 								// 0      1      2       3          4          5         6      7      8
 	static int [][] map = {
 	        // NORTH, EAST, SOUTH, WEST 
@@ -190,7 +187,7 @@ public class HannahTextGame {
 			showMap();
 			return "start over"; 
 		} else if (userCommand.equals("T")) {
-			takeItem();
+			player1.take(locations);
 			return "start over"; 
 		} else if (userCommand.equals("B")) {
 			backtrack();
@@ -236,7 +233,7 @@ public class HannahTextGame {
 	// specific command methods
 	public static void showMap () {
 			
-			if (player1.inventory[0] != null) {
+			if (player1.inventory.contains(map1)) {
 				System.out.println("*********THE MAP*******");
 				System.out.println("NOTE:there is one secret\nlocation not on map.---");
 				System.out.println("-----------------------");
@@ -253,6 +250,7 @@ public class HannahTextGame {
 		
 		
 	}
+	/**
 	public static void takeItem () {
 		Object currentloc = locations[player1.location];
 		
@@ -280,7 +278,7 @@ public class HannahTextGame {
 			System.out.println("You now have a CandleStick.");
 		}
 		
-	}
+	}**/
 	
 	
 	public static void history () {

@@ -18,8 +18,15 @@ public class Player {
 		
 	}
 	
-	public void take() {
-		Item itemHere = locations[this.location].item;
+	public void take(Locale [] loc) {
+		Locale currentloc = loc[this.location];
+		Item itemHere = currentloc.item;
+		if (itemHere == null) {
+			System.out.println("There is no item to take");
+		} else {
+			this.inventory.add(itemHere);
+			currentloc.item = null;
+		}
 	}
 	
 	
