@@ -11,8 +11,8 @@ public class LinkedTrail implements BreadcrumbTrail {
 	 * Push method
 	 * @param takes in current location
 	 */
-	public void dropCrumb(int x) {
-		Breadcrumb newCrumb = new Breadcrumb(x, this.top);
+	public void dropCrumb(int loc) {
+		Breadcrumb newCrumb = new Breadcrumb(loc, this.top);
 		this.top = newCrumb;
 			
 	}
@@ -21,37 +21,35 @@ public class LinkedTrail implements BreadcrumbTrail {
 	 */
 	
 	public void pickupCrumb() {
-		if (this.top != null) {
-			this.top = this.top.link;
-			System.out.println("backtrack worked");
-		} else {
-			System.out.println("You cannot backtrack any further");
-		}
+			this.top = this.top.next;
+			System.out.println("picked up crumb worked");
 		
 	}
 	/**
 	 * Top method
 	 */
 	public int currentCrumb() {
-		if (this.top != null) {
+		if (hasMoreCrumbs()) {
 			return top.data;
-		}
+		} else {
 			return -1;
+		}
+			
 	}
 	/**
 	 * IsNotEmpty method
 	 */
 	public boolean hasMoreCrumbs() {
-		return (top == null);
+		return (this.top != null);
 	}
 
 }
 
 class Breadcrumb {
 	int data;
-	Breadcrumb link;
-	Breadcrumb(int x,Breadcrumb n) {
-		this.data = x;
-		this.link = n;
+	Breadcrumb next;
+	Breadcrumb(int loc,Breadcrumb n) {
+		this.data = loc;
+		this.next = n;
 	}
 }

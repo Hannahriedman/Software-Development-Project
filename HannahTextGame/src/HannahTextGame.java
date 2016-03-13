@@ -253,28 +253,30 @@ public class HannahTextGame {
 	}
 	
 	public static void history () {
-		Object lastLocation = locations[trail.currentCrumb()];
-		System.out.println("Previous Moves: " + ((Locale) lastLocation).name());
-		/**for (int i = 0; trail.hasMoreCrumbs();i--) {
-			trail.indexof(i); 
-			System.out.println(trail.currentCrumb());
-		}**/
+		
+		if (trail.hasMoreCrumbs()) {
+			Locale lastLocation = locations[trail.currentCrumb()];
+			System.out.println("Previous Moves: " + lastLocation.name());
+			
+		}
 	}
 	
 	
 	public static void backtrack () {
-		System.out.println("Line 1!"); // using to test where code fails
-		trail.pickupCrumb();
-		if (trail.currentCrumb() != -1) {
-			System.out.println("Line 2!");
-			System.out.println(locations[trail.currentCrumb()]);
-			player1.location = trail.currentCrumb();
+		if (trail.hasMoreCrumbs()) { // checks to see if there is any crumbs left
+			System.out.println("Line 1!"); // using to test where code fails
+			trail.pickupCrumb();
+			System.out.println(trail.currentCrumb());
+			if (trail.currentCrumb() != -1) {
+				System.out.println("Line 2!");
+				System.out.println(locations[trail.currentCrumb()]);
+				player1.location = trail.currentCrumb();
+			}
+		} else {
+			System.out.println("You cannot go back any further!");
 		}
-		
-		
-		
-		
-	}
+	
+}
 	
 		
 		
