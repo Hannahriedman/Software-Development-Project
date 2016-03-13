@@ -13,8 +13,12 @@ public class Locale {
 
 	@Override
 	public String toString() {
-		return  "You are now in the " + this.name + "\n" +  this.descrip + 
-				"\nThere is a " + this.item + " Here.";
+		   if (this.item == null) {
+			   return "You are now in the " + this.name + "\n" +  this.descrip;
+			} else {
+			   return "You are now in the " + this.name + "\n" +  this.descrip +
+					   "\nThere is a " + this.item.name + " here.";
+			}
 	}
 	
 	public String name () {

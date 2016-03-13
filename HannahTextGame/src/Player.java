@@ -26,6 +26,9 @@ public class Player {
 		} else {
 			this.inventory.add(itemHere);
 			currentloc.item = null;
+			this.score += 5;
+			System.out.println("You now have a " + itemHere.name + " .\n" 
+			+ itemHere.descrip);
 		}
 	}
 	
