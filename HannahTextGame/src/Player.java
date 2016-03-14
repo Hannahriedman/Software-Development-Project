@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class Player {
 	
-	public String    name;
-	public int       location = 0;
-	public String    gender;
-	public int       score = 0;
+	public String          name;
+	public int             location =  0;
+	public String          gender;
+	public int             score =     0;
 	public ArrayList<Item> inventory;
-	static Scanner keyboard1 = new Scanner(System.in);
+	static Scanner         keyboard1 = new Scanner(System.in);
 	
 	public Player(String name, int loc,String gender,String [] inventory) {
 		this.name      = name;
@@ -22,7 +22,8 @@ public class Player {
 	
 	public void take(Locale [] loc) {
 		Locale currentloc = loc[this.location];
-		Item itemHere = currentloc.item;
+		Item itemHere     = currentloc.item;
+		
 		if (itemHere == null) {
 			System.out.println("There is no item to take");
 		} else {
@@ -37,7 +38,7 @@ public class Player {
 	
 	public void drop(Locale [] loc) {
 		Locale currentloc = loc[this.location];
-		Item itemHere = currentloc.item;
+		Item itemHere     = currentloc.item;
 		String itemToDrop;
 		Item checkItem;
 		
@@ -48,7 +49,7 @@ public class Player {
 			for (int i=0;i<this.inventory.size();i++){
 				checkItem =this.inventory.get(i);
 				if (checkItem.name.equals(itemToDrop)) {
-					System.out.print("You have dropped the " + itemToDrop);
+					System.out.println("You have dropped the " + itemToDrop);
 					currentloc.item = checkItem;
 					this.inventory.remove(i);
 					this.score -= 5;

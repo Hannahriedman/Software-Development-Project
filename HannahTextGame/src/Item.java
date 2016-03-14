@@ -8,4 +8,9 @@ public class Item {
 		this.name    = name;
 		this.descrip = descrip;
 	}
+	
+	@Override
+	public String toString() {
+		   return this.name;
+	}
 }

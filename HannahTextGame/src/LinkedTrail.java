@@ -22,18 +22,16 @@ public class LinkedTrail implements BreadcrumbTrail {
 	
 	public void pickupCrumb() {
 			this.top = this.top.next;
-			System.out.println("picked up crumb worked");
-		
 	}
 	/**
 	 * Top method
 	 */
 	public int currentCrumb() {
-		if (hasMoreCrumbs()) {
+		//if (hasMoreCrumbs()) {
 			return top.data;
-		} else {
-			return -1;
-		}
+		//} else {
+		//	return -1;
+		//}
 			
 	}
 	/**

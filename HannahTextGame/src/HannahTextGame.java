@@ -33,10 +33,10 @@ public class HannahTextGame {
 	
 	static Scanner keyboard = new Scanner(System.in);
 	
-	static Item map1 = new Item("map","This is a map of the mansion.Type M to use it.");
+	static Item map1 =        new Item("map","This is a map of the mansion.Type M to use it.");
 	static Item candlestick = new Item("candlestick","This is a candlestick.");
-	static Item rope = new Item("rope","This is a thick braided rope.");
-	static Item knife = new Item("knife","This knife is bloody.");
+	static Item rope =        new Item("rope","This is a thick braided rope.");
+	static Item knife =       new Item("knife","This knife is bloody.");
 	
 	static Locale outside =        new Locale(
 			"Outside",
@@ -96,7 +96,7 @@ public class HannahTextGame {
 	           { 6, 7, -1, -1 } // from dining room: kitchen hall--
 	};
 	
-	static Player player1 = new Player(playerName,location,gender,inventory);
+	static Player player1 =    new Player(playerName,location,gender,inventory);
 	
 	static LinkedTrail trail = new LinkedTrail();
 
@@ -198,11 +198,10 @@ public class HannahTextGame {
 			player1.drop(locations);
 			return "start over"; 
 		} else if (userCommand.equals("P")) {
-			history(); 
+			playerStats(); 
 			return "start over"; 
 		}else if (userCommand.equals("H")) {
-			System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
-					+ "Type 'Q' to quit the game, 'M' to see Map, and 'T' to take item.");
+			help();
 			return "start over";
 		} else {
 			System.out.println("Invalid command!\n");
@@ -253,24 +252,35 @@ public class HannahTextGame {
 		
 	}
 	
-	public static void history () {
+	public static void help () {
 		
-		if (trail.hasMoreCrumbs()) {
+		System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
+				+ "Type 'Q' to quit the game, 'M' to see Map, 'T' to take item.\n"
+				+ " 'D' to drop item, and 'P' to see player stats.");
+	}
+	public static void playerStats () {
+		
+		System.out.println("Current Location: " + locations[player1.location].name);
+		System.out.println("Current Points: " + player1.score);
+		System.out.println("Inventory: " + player1.inventory);
+		
+		/**if (trail.hasMoreCrumbs()) { 
 			Locale lastLocation = locations[trail.currentCrumb()];
 			System.out.println("Previous Moves: " + lastLocation.name());
-		}
+		}**/
 	}
 	
 	
 	public static void backtrack () {
+		
 		if (trail.hasMoreCrumbs()) { // checks to see if there is any crumbs left
-			System.out.println("Line 1!"); // using to test where code fails
 			trail.pickupCrumb();
-			System.out.println(trail.currentCrumb());
-			if (trail.currentCrumb() != -1) {
-				System.out.println("Line 2!");
+			
+			if (trail.hasMoreCrumbs()) {
 				System.out.println(locations[trail.currentCrumb()]);
 				player1.location = trail.currentCrumb();
+			} else {
+				System.out.println("You cannnot go back any further!");
 			}
 		} else {
 			System.out.println("You cannot go back any further!");
