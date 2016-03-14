@@ -251,7 +251,6 @@ public class HannahTextGame {
 		
 		
 	}
-	
 	public static void help () {
 		
 		System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
@@ -263,14 +262,7 @@ public class HannahTextGame {
 		System.out.println("Current Location: " + locations[player1.location].name);
 		System.out.println("Current Points: " + player1.score);
 		System.out.println("Inventory: " + player1.inventory);
-		
-		/**if (trail.hasMoreCrumbs()) { 
-			Locale lastLocation = locations[trail.currentCrumb()];
-			System.out.println("Previous Moves: " + lastLocation.name());
-		}**/
 	}
-	
-	
 	public static void backtrack () {
 		
 		if (trail.hasMoreCrumbs()) { // checks to see if there is any crumbs left

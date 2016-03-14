@@ -3,7 +3,7 @@ public class Locale {
 	
 	public String name;
 	public String descrip;
-	public Item item;
+	public Item   item;
 	
 	public Locale(String name, String descrip, Item item) {
 		this.name    = name;

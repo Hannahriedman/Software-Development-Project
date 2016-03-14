@@ -9,7 +9,7 @@ public class LinkedTrail implements BreadcrumbTrail {
 	}
 	/**
 	 * Push method
-	 * @param takes in current location
+	 * @param takes in current location index
 	 */
 	public void dropCrumb(int loc) {
 		Breadcrumb newCrumb = new Breadcrumb(loc, this.top);
@@ -18,6 +18,8 @@ public class LinkedTrail implements BreadcrumbTrail {
 	}
 	/**
 	 * Pop method
+	 * this is used with backtrack method to 
+	 * pick up last crumb
 	 */
 	
 	public void pickupCrumb() {
@@ -25,17 +27,17 @@ public class LinkedTrail implements BreadcrumbTrail {
 	}
 	/**
 	 * Top method
+	 * @return integer that represnts location 
+	 * on top of breadcrumbtrail
 	 */
 	public int currentCrumb() {
-		//if (hasMoreCrumbs()) {
 			return top.data;
-		//} else {
-		//	return -1;
-		//}
 			
 	}
 	/**
 	 * IsNotEmpty method
+	 * @return boolean that tells us if the 
+	 * breadcrumbtrail has more crumbs left
 	 */
 	public boolean hasMoreCrumbs() {
 		return (this.top != null);
