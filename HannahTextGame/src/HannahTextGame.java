@@ -141,6 +141,7 @@ public class HannahTextGame {
 		playerGender(gender); // converts input into actual gender
 		
 		System.out.println(locations[0]); // start of game
+		trail.dropCrumb(player1.location); // puts first breadcrumb down at start location
 		System.out.println("*************************************");
 		System.out.println("Hello Detective " + player1.name +"! You can navigate the game by using\n" 
 				+ "N,E,S,W commands.Type H to get help, Go North to the door to start the adventure!");
@@ -222,9 +223,9 @@ public class HannahTextGame {
 		int nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale index
 	
 		if (nextLocation != -1) {
-			trail.dropCrumb(player1.location); // drops crumb at last location
 			System.out.println(locations[nextLocation]);
 			player1.location=nextLocation;
+			trail.dropCrumb(player1.location); // drops crumb at current location
 		} else {
 			System.out.println("You can not go " + command + ".");
 			 
@@ -257,7 +258,6 @@ public class HannahTextGame {
 		if (trail.hasMoreCrumbs()) {
 			Locale lastLocation = locations[trail.currentCrumb()];
 			System.out.println("Previous Moves: " + lastLocation.name());
-			
 		}
 	}
 	

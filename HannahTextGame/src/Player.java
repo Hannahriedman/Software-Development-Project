@@ -51,6 +51,7 @@ public class Player {
 					System.out.print("You have dropped the " + itemToDrop);
 					currentloc.item = checkItem;
 					this.inventory.remove(i);
+					this.score -= 5;
 				} 
 				
 			}
