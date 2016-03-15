@@ -31,8 +31,12 @@ public class LinkedTrail implements BreadcrumbTrail {
 	 * on top of breadcrumbtrail
 	 */
 	public int currentCrumb() {
+		if (hasMoreCrumbs()) {
 			return top.data;
-			
+		} else {
+			dropCrumb(0);
+			return 0;
+		}
 	}
 	/**
 	 * IsNotEmpty method

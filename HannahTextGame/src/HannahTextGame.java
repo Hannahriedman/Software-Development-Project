@@ -267,12 +267,12 @@ public class HannahTextGame {
 		
 		if (trail.hasMoreCrumbs()) { // checks to see if there is any crumbs left
 			trail.pickupCrumb();
-			
 			if (trail.hasMoreCrumbs()) {
 				System.out.println(locations[trail.currentCrumb()]);
 				player1.location = trail.currentCrumb();
 			} else {
 				System.out.println("You cannnot go back any further!");
+				
 			}
 		} else {
 			System.out.println("You cannot go back any further!");
