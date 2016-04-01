@@ -200,7 +200,13 @@ public class HannahTextGame {
 		} else if (userCommand.equals("P")) {
 			playerStats(); 
 			return "start over"; 
-		}else if (userCommand.equals("H")) {
+		} else if (userCommand.equals("U")) {
+			use(); 
+			return "start over"; 
+		} else if (userCommand.equals("X")) {
+			examine(); 
+			return "start over"; 
+		} else if (userCommand.equals("H")) {
 			help();
 			return "start over";
 		} else {
@@ -280,7 +286,12 @@ public class HannahTextGame {
 	
 }
 	
+	public static void use() {	
 		
+	}
+	public static void examine() {
+		
+	}
 		
 		
 		
