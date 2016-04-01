@@ -290,9 +290,20 @@ public class HannahTextGame {
 		
 	}
 	public static void examine() {
+		Item itemAtLocation = locations[player1.location].item;
+		if (itemAtLocation.equals(null)) {
+			System.out.println("There is no item here.");
+		} else {
+			if (itemAtLocation.isDiscoverd == false) {
+				itemAtLocation.isDiscoverd = true;
+				System.out.println("After close examination you have found a " 
+				+ itemAtLocation.name );
+			} else {
+				System.out.println("You have already discoverd the item here");
+			}
+		}
 		
-	}
-		
+	}	
 		
 		
 }

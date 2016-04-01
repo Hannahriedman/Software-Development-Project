@@ -32,13 +32,17 @@ public class Player {
 		Item   itemHere   = currentloc.item;
 		
 		if (itemHere == null) { // checks if there is item at location 
-			System.out.println("There is no item to take");
+			System.out.println("There is no item here to take");
 		} else { 
-			this.inventory.add(itemHere); 
-			currentloc.item = null; 
-			this.score += 5;
-			System.out.println("You now have a " + itemHere.name + " .\n" 
-			+ itemHere.descrip);
+			if (itemHere.isDiscoverd) {
+				this.inventory.add(itemHere); 
+				currentloc.item = null; 
+				this.score += 5;
+				System.out.println("You now have a " + itemHere.name + " .\n" 
+				+ itemHere.descrip);
+			} else {
+				System.out.println("There is no visble item to take.");
+			}
 		}
 	}
 	
