@@ -35,8 +35,8 @@ public class HannahTextGame {
 	
 	static Item map1 =        new Item("map","This is a map of the mansion.Type M to use it.",10);
 	static Item candlestick = new Item("candlestick","This is a candlestick.",5);
-	static Item rope =        new Item("rope","This is a thick braided rope.",5);
-	static Item knife =       new Item("knife","This knife is bloody.",15);
+	static Item rope =        new LimitedUseItem("rope","This is a thick braided rope.",15,5);
+	static Item knife =       new Item("knife","This knife is bloody.",10);
 	
 	static Locale outside =        new Locale(
 			"Outside",
