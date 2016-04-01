@@ -114,7 +114,7 @@ public class HannahTextGame {
 			// makes input case in-sensititive.
 		
 			direction = processDirection(userCommand); // changes input into directions/commands
-		
+			
 			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
 				break;  // quits game
 			} else if (direction.equals("start over")) {
@@ -188,14 +188,16 @@ public class HannahTextGame {
 		} else if (userCommand.equals("M")) {
 			showMap();
 			return "start over"; 
-		} else if (userCommand.equals("T")) {
-			player1.take(locations);
+		} else if (userCommand.startsWith("T")) {
+			String[] item = userCommand.split("T ");
+			player1.take(locations,item);
 			return "start over"; 
 		} else if (userCommand.equals("B")) {
 			backtrack();
 			return "start over"; 
-		} else if (userCommand.equals("D")) {
-			player1.drop(locations);
+		} else if (userCommand.startsWith("D")) {
+			String[] item = userCommand.split("D ");
+			player1.drop(locations,item);
 			return "start over"; 
 		} else if (userCommand.equals("P")) {
 			playerStats(); 

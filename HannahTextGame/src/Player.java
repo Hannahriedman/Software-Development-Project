@@ -27,7 +27,7 @@ public class Player {
 	 * item from location and add 5 points to score.
 	 * @param loc is the location array of loc Objects.
 	 */
-	public void take(Locale [] loc) {
+	public void take(Locale [] loc,String[] item) {
 		Locale currentloc = loc[this.location];
 		Item   itemHere   = currentloc.item;
 		
@@ -54,7 +54,7 @@ public class Player {
 	 * Then it drops item and subtracts 5 points.
 	 * @param loc is the location array of loc Objects.
 	 */
-	public void drop(Locale [] loc) {
+	public void drop(Locale [] loc,String[] item) {
 		Locale currentloc = loc[this.location];
 		Item   itemHere   = currentloc.item;
 		String itemToDrop;

@@ -13,7 +13,7 @@ public class Locale {
 
 	@Override
 	public String toString() {
-		   if (this.item == null) {
+		   if (this.item == null || this.item.isDiscoverd == false) {
 			   return "You are now in the " + this.name + "\n" +  this.descrip;
 			} else {
 			   return "You are now in the " + this.name + "\n" +  this.descrip +
