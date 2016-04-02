@@ -297,7 +297,7 @@ public class HannahTextGame {
 		StringBuilder sb = new StringBuilder();
 		
         for(String str : userinput) sb.append(str);
-        return sb.toString().toLowerCase();
+        return sb.toString().toLowerCase().trim();
 		
 	}
 	public static void use() {	

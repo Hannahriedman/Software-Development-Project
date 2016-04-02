@@ -59,13 +59,7 @@ public class Player {
 		Item   itemHere   = currentloc.item;
 		String itemToDrop = item;
 		Item   checkItem;
-		System.out.println(item);
-		itemToDrop = item.toString();
-		
-		
-		//System.out.println("What item do you want to drop?");
-		//itemToDrop = keyboard1.nextLine().toLowerCase();
-		
+
 		if (itemHere == null) {
 			System.out.println(itemToDrop);
 			for (int i=0;i<this.inventory.size();i++){
