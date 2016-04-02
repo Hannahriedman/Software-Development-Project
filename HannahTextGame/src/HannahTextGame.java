@@ -189,14 +189,14 @@ public class HannahTextGame {
 			showMap();
 			return "start over"; 
 		} else if (userCommand.startsWith("T")) {
-			String[] item = userCommand.split("T ");
+			String item = stringConverter(userCommand.split("T "));
 			player1.take(locations,item);
 			return "start over"; 
 		} else if (userCommand.equals("B")) {
 			backtrack();
 			return "start over"; 
 		} else if (userCommand.startsWith("D")) {
-			String[] item = userCommand.split("D ");
+			String item = stringConverter(userCommand.split("D "));
 			player1.drop(locations,item);
 			return "start over"; 
 		} else if (userCommand.equals("P")) {
@@ -287,7 +287,19 @@ public class HannahTextGame {
 		}
 	
 }
-	
+	/**
+	 * Homemade "to string" method to properly convert 
+	 * user input into string without hashcode. 
+	 * @param userinput
+	 * @return userinput into proper string
+	 */
+	public static String stringConverter (String[] userinput) {
+		StringBuilder sb = new StringBuilder();
+		
+        for(String str : userinput) sb.append(str);
+        return sb.toString().toLowerCase();
+		
+	}
 	public static void use() {	
 		
 	}

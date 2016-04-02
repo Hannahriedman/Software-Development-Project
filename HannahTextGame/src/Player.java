@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class Player {
 	
@@ -8,7 +8,7 @@ public class Player {
 	public String          gender;
 	public int             score     = 0;
 	public ArrayList<Item> inventory;
-	static Scanner         keyboard1 = new Scanner(System.in);
+	//static Scanner         keyboard1 = new Scanner(System.in);
 	
 	public Player(String name, int loc,String gender,String [] inventory) {
 		this.name      = name;
@@ -27,7 +27,7 @@ public class Player {
 	 * item from location and add 5 points to score.
 	 * @param loc is the location array of loc Objects.
 	 */
-	public void take(Locale [] loc,String[] item) {
+	public void take(Locale [] loc,String item) {
 		Locale currentloc = loc[this.location];
 		Item   itemHere   = currentloc.item;
 		
@@ -54,16 +54,20 @@ public class Player {
 	 * Then it drops item and subtracts 5 points.
 	 * @param loc is the location array of loc Objects.
 	 */
-	public void drop(Locale [] loc,String[] item) {
+	public void drop(Locale [] loc,String item) {
 		Locale currentloc = loc[this.location];
 		Item   itemHere   = currentloc.item;
-		String itemToDrop;
+		String itemToDrop = item;
 		Item   checkItem;
+		System.out.println(item);
+		itemToDrop = item.toString();
 		
-		System.out.println("What item do you want to drop?");
-		itemToDrop = keyboard1.nextLine().toLowerCase();
+		
+		//System.out.println("What item do you want to drop?");
+		//itemToDrop = keyboard1.nextLine().toLowerCase();
 		
 		if (itemHere == null) {
+			System.out.println(itemToDrop);
 			for (int i=0;i<this.inventory.size();i++){
 				checkItem =this.inventory.get(i);
 				if (checkItem.name.equals(itemToDrop)) {
