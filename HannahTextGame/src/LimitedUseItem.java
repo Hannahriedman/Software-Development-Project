@@ -1,15 +1,16 @@
 
 public class LimitedUseItem extends Item {
 
-	public int Usesremaining;
+	public int usesremaining;
 	
-	public LimitedUseItem(String name, String descrip, int value,int remain) {
-		super(name, descrip, value);
-		this.Usesremaining = remain;
+	
+	public LimitedUseItem(String name, String descrip,String use,int value,int remain) {
+		super(name, descrip, use, value);
+		this.usesremaining = remain;
 	}
 	
-	public boolean use() {
-		if (this.Usesremaining == 0) {
+	public boolean uses() {
+		if (this.usesremaining == 0) {
 			return false;
 		} else {
 			return true;

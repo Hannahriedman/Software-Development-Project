@@ -33,10 +33,10 @@ public class HannahTextGame {
 	
 	static Scanner keyboard = new Scanner(System.in);
 	
-	static Item map1 =        new Item("map","This is a map of the mansion.Type M to use it.",10);
-	static Item candlestick = new Item("candlestick","This is a candlestick.",5);
-	static Item rope =        new LimitedUseItem("rope","This is a thick braided rope.",15,5);
-	static Item knife =       new Item("knife","This knife is bloody.",10);
+	static Item map1 =        new Item("map","This is a map of the mansion.Type M to use it.","Type M to see map.",10);
+	static Item candlestick = new LimitedUseItem("candlestick","This is a candlestick.","The room is brighter now.",15,5);
+	static Item rope =        new Item("rope","This is a thick braided rope.","The rope does nothing, you put it back.",5);
+	static Item knife =       new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",10);
 	
 	static Locale outside =        new Locale(
 			"Outside",
@@ -144,7 +144,7 @@ public class HannahTextGame {
 		trail.dropCrumb(player1.location); // puts first breadcrumb down at start location
 		System.out.println("*************************************");
 		System.out.println("Hello Detective " + player1.name +"! You can navigate the game by using\n" 
-				+ "N,E,S,W commands.Type H to get help, Go North to the door to start the adventure!");
+				+ "N,E,S,W commands.Type H to get a list of all commands, Go North to the door to start the adventure!");
 	}
 	public static void byeMessage() {
 		
@@ -202,8 +202,9 @@ public class HannahTextGame {
 		} else if (userCommand.equals("P")) {
 			playerStats(); 
 			return "start over"; 
-		} else if (userCommand.equals("U")) {
-			use(); 
+		} else if (userCommand.startsWith("U")) {
+			String item = stringConverter(userCommand.split("U "));
+			use(item); 
 			return "start over"; 
 		} else if (userCommand.equals("X")) {
 			examine(); 
@@ -260,10 +261,13 @@ public class HannahTextGame {
 		
 	}
 	public static void help () {
-		
-		System.out.println("Use the commands N,E,S,W to go in the cardnial directions\n"
-				+ "Type 'Q' to quit the game, 'M' to see Map, 'T' to take item.\n"
-				+ " 'D' to drop item, and 'P' to see player stats.");
+		System.out.println("COMMANDS");
+		System.out.println("--------");
+		System.out.println("'N','E','S','W' to go in the cardnial directions");
+		System.out.println("'Q' to quit the game\n'M' to see Map\n'T' to take item*\n"
+				+ "'D' to drop item*\n'P' to see player stats\n'X' to examine location for item\n"
+				+ "'U' to use item*");
+		System.out.println("*need a specified item after command.\n");
 	}
 	public static void playerStats () {
 		
@@ -287,7 +291,8 @@ public class HannahTextGame {
 		}
 	
 }
-	/**
+	
+	/** 
 	 * Homemade "to string" method to properly convert 
 	 * user input into string without hashcode. 
 	 * @param userinput
@@ -300,7 +305,27 @@ public class HannahTextGame {
         return sb.toString().toLowerCase().trim();
 		
 	}
-	public static void use() {	
+	
+	public static void use(String item) {	
+		String itemToUse = item;
+		
+		for (int i=0;i<player1.inventory.size();i++){
+			Item checkItem =player1.inventory.get(i);
+			if (checkItem.name.equals(itemToUse)) {
+				if (checkItem.name.equals(candlestick)) {
+					if (uses()) {
+						System.out.println("You now have the " + itemToUse + " Equiped.");
+						System.out.println(checkItem.use);
+					}
+					
+				} else {
+					System.out.println("You now have the " + itemToUse + " Equiped.");
+					System.out.println(checkItem.use);
+				}
+			} 
+			
+		}
+		
 		
 	}
 	public static void examine() {
