@@ -46,7 +46,7 @@ public class Player {
 			}
 		}
 	}
-	
+
 	/**
 	 * Drop method
 	 * intakes what user wants to drop, Checks if

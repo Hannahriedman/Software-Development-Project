@@ -317,7 +317,7 @@ public class HannahTextGame {
 						System.out.println("You now have the " + itemToUse + " Equiped.");
 						System.out.println(checkItem.use);
 					}
-					
+				
 				} else {
 					System.out.println("You now have the " + itemToUse + " Equiped.");
 					System.out.println(checkItem.use);

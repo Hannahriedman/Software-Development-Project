@@ -3,7 +3,7 @@ public class LimitedUseItem extends Item {
 
 	public int usesremaining;
 	
-	
+
 	public LimitedUseItem(String name, String descrip,String use,int value,int remain) {
 		super(name, descrip, use, value);
 		this.usesremaining = remain;
@@ -15,7 +15,7 @@ public class LimitedUseItem extends Item {
 		} else {
 			return true;
 		}
-		
+	
 	}
 
 }

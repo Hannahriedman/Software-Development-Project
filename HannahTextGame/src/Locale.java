@@ -10,7 +10,7 @@ public class Locale {
 		this.descrip = descrip;
 		this.item    = item;
 	}
-
+	
 	@Override
 	public String toString() {
 		   if (this.item == null || this.item.isDiscoverd == false) {
