@@ -33,10 +33,10 @@ public class HannahTextGame {
 	
 	static Scanner keyboard = new Scanner(System.in);
 	
-	static Item map1 =        new Item("map","This is a map of the mansion.Type M to use it.","Type M to see map.",10);
+	static Item map1 =                  new Item("map","This is a map of the mansion.Type M to use it.","Type M to see map.",10);
+	static Item rope =                  new Item("rope","This is a thick braided rope.","The rope does nothing, you put it back.",5);
+	static Item knife =                 new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",10);
 	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","This is a candlestick.","The room is brighter now.",15,5);
-	static Item rope =        new Item("rope","This is a thick braided rope.","The rope does nothing, you put it back.",5);
-	static Item knife =       new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",10);
 	
 	static Locale outside =        new Locale(
 			"Outside",
@@ -265,8 +265,8 @@ public class HannahTextGame {
 		System.out.println("--------");
 		System.out.println("'N','E','S','W' to go in the cardnial directions");
 		System.out.println("'Q' to quit the game\n'M' to see Map\n'T' to take item*\n"
-				+ "'D' to drop item*\n'P' to see player stats\n'X' to examine location for item\n"
-				+ "'U' to use item*");
+				          + "'D' to drop item*\n'P' to see player stats\n"+ 
+				          "'X' to examine location for item\n'U' to use item*");
 		System.out.println("*need a specified item after command.\n");
 	}
 	public static void playerStats () {

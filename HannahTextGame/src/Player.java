@@ -8,8 +8,14 @@ public class Player {
 	public String          gender;
 	public int             score     = 0;
 	public ArrayList<Item> inventory;
-	//static Scanner         keyboard1 = new Scanner(System.in);
-	
+	/**
+	 * PLayer Class
+	 * @param name: String of player name
+	 * @param loc: integer of current location
+	 * @param gender: String of player gender
+	 * @param inventory: String array List of player's items or inventory
+	 * score: interger of players score. default is at 0.
+	 */
 	public Player(String name, int loc,String gender,String [] inventory) {
 		this.name      = name;
 		this.location  = loc;
@@ -23,9 +29,11 @@ public class Player {
 	/**
 	 * Take method 
 	 * First checks to see if item is at location,
-	 * If yes, then add item to inventory, remove
-	 * item from location and add 5 points to score.
+	 * If yes, then check if item is discovered and if item equals
+	 * what item they said in command, then: add item to inventory, remove
+	 * item from location and add to score the value of Object.
 	 * @param loc is the location array of loc Objects.
+	 * @param item is the item the user wishes to drop.
 	 */
 	public void take(Locale [] loc,String item) {
 		Locale currentloc = loc[this.location];
@@ -49,8 +57,7 @@ public class Player {
 
 	/**
 	 * Drop method
-	 * intakes what user wants to drop, Checks if
-	 * there is an object already at location, if not 
+	 * Checks if there is an object already at location, if not 
 	 * then checks if user input equals an item in inventory.
 	 * Then it drops item and subtracts its worth.
 	 * @param loc is the location array of loc Objects.
