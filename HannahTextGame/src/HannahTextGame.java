@@ -34,7 +34,7 @@ public class HannahTextGame {
 	static Scanner keyboard = new Scanner(System.in);
 	
 	static Item map1 =        new Item("map","This is a map of the mansion.Type M to use it.","Type M to see map.",10);
-	static Item candlestick = new LimitedUseItem("candlestick","This is a candlestick.","The room is brighter now.",15,5);
+	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","This is a candlestick.","The room is brighter now.",15,5);
 	static Item rope =        new Item("rope","This is a thick braided rope.","The rope does nothing, you put it back.",5);
 	static Item knife =       new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",10);
 	
@@ -312,8 +312,8 @@ public class HannahTextGame {
 		for (int i=0;i<player1.inventory.size();i++){
 			Item checkItem =player1.inventory.get(i);
 			if (checkItem.name.equals(itemToUse)) {
-				if (checkItem.name.equals(candlestick)) {
-					if (((LimitedUseItem) candlestick).uses()) {
+				if (checkItem.name.equals("candlestick")) {
+					if (candlestick.uses()) {
 						System.out.println("You now have the " + itemToUse + " Equiped.");
 						System.out.println(checkItem.use);
 					} else {
@@ -332,7 +332,6 @@ public class HannahTextGame {
 	}
 	public static void examine() {
 		Item itemAtLocation = locations[player1.location].item;
-		System.out.println(itemAtLocation);
 		if (itemAtLocation==null) {
 			System.out.println("There is no item here.");
 		} else {
