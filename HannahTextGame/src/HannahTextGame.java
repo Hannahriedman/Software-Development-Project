@@ -313,9 +313,11 @@ public class HannahTextGame {
 			Item checkItem =player1.inventory.get(i);
 			if (checkItem.name.equals(itemToUse)) {
 				if (checkItem.name.equals(candlestick)) {
-					if (uses()) {
+					if (((LimitedUseItem) candlestick).uses()) {
 						System.out.println("You now have the " + itemToUse + " Equiped.");
 						System.out.println(checkItem.use);
+					} else {
+						System.out.println("You cannot use the " + itemToUse);
 					}
 				
 				} else {
@@ -330,7 +332,8 @@ public class HannahTextGame {
 	}
 	public static void examine() {
 		Item itemAtLocation = locations[player1.location].item;
-		if (itemAtLocation.equals(null)) {
+		System.out.println(itemAtLocation);
+		if (itemAtLocation==null) {
 			System.out.println("There is no item here.");
 		} else {
 			if (itemAtLocation.isDiscoverd == false) {

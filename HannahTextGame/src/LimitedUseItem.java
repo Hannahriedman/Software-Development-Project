@@ -13,6 +13,7 @@ public class LimitedUseItem extends Item {
 		if (this.usesremaining == 0) {
 			return false;
 		} else {
+			this.usesremaining -= 1;
 			return true;
 		}
 	
