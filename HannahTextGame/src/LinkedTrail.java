@@ -9,7 +9,7 @@ public class LinkedTrail implements BreadcrumbTrail {
 	}
 	/**
 	 * Push method
-	 * @param takes in current location index
+	 * @param loc: integer that is current location index
 	 */
 	public void dropCrumb(int loc) {
 		Breadcrumb newCrumb = new Breadcrumb(loc, this.top);
