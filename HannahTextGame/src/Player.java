@@ -10,10 +10,11 @@ public class Player {
 	public ArrayList<Item> inventory;
 	/**
 	 * PLayer Class
-	 * @param name: String of player name
-	 * @param loc: integer of current location
-	 * @param gender: String of player gender
-	 * @param inventory: String array List of player's items or inventory
+	 * @param name: String of player name.
+	 * @param loc: integer of current location.
+	 * @param gender: String of player gender.
+	 * @param inventory: String array List of player's items or inventory.
+	 * 
 	 * score: interger of players score. default is at 0.
 	 */
 	public Player(String name, int loc,String gender,String [] inventory) {
@@ -27,7 +28,7 @@ public class Player {
 	}
 	
 	/**
-	 * Take method 
+	 * Take method. 
 	 * First checks to see if item is at location,
 	 * If yes, then check if item is discovered and if item equals
 	 * what item they said in command, then: add item to inventory, remove
@@ -56,7 +57,7 @@ public class Player {
 	}
 
 	/**
-	 * Drop method
+	 * Drop method.
 	 * Checks if there is an object already at location, if not 
 	 * then checks if user input equals an item in inventory.
 	 * Then it drops item and subtracts its worth.
@@ -70,7 +71,6 @@ public class Player {
 		Item   checkItem;
 
 		if (itemHere == null) {
-			System.out.println(itemToDrop);
 			for (int i=0;i<this.inventory.size();i++){
 				checkItem =this.inventory.get(i);
 				if (checkItem.name.equals(itemToDrop)) {

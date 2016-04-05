@@ -11,7 +11,8 @@ public class Item {
  * @param name: String of name of the item
  * @param descrip: String of Description of the iem
  * @param use: String of what use does the item have
- * @param value: integer of amount of points item is worth
+ * @param value: integer of amount of points item is worth. 
+ * 
  * isDiscovered: boolean to determine if player has discovered item yet
  * default is false 
  * 

@@ -34,16 +34,16 @@ public class HannahTextGame {
 	static Scanner keyboard = new Scanner(System.in);
 	
 	/**
-	 * Initalizations of Items
+	 * Initalizations of Items.
 	 * 3 Items and 1 LimitedUseItem
 	 */
 	static Item map1 =                  new Item("map","This is a map of the mansion.Type M to use it.","Type M to see map.",10);
 	static Item rope =                  new Item("rope","This is a thick braided rope.","The rope does nothing, you put it back.",5);
 	static Item knife =                 new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",10);
-	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","This is a candlestick.","The room is brighter now.",15,5);
+	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","You can use this candle 5 times.","The room is brighter now.",15,5);
 	
 	/**
-	 * Initalizations of Locations
+	 * Initalizations of Locations.
 	 * 9 Locations
 	 */
 	static Locale outside =        new Locale(
@@ -85,7 +85,7 @@ public class HannahTextGame {
 	static Locale diningRoom =     new Locale(
 			"Dining Room",
 			"There is a door to the north.",
-			null);
+			rope);
 	
 	/**
 	 * Location Array to keep all location Locale's
@@ -93,8 +93,8 @@ public class HannahTextGame {
 	static Locale [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
 								// 0      1      2       3          4          5         6      7      8
 	/**
-	 * Matrix map to navigate the game
-	 * using integers to represent the index of the location in the Location array above
+	 * Matrix map to navigate the game.
+	 * Uses integers to represent the index of the location in the Location array above,
 	 * and the cardnial directions users enter from a specific location.
 	 * -1 represents where there is no way of going that way from that location.
 	 */
@@ -149,9 +149,9 @@ public class HannahTextGame {
 	}
 	
 	/**
-	 *  Messages methods
+	 *  Messages methods.
 	 *  Intro Message that starts everygame.
-	 *  GoodBye method that ends game.
+	 *  Goodbye method that ends game.
 	 */
 	public static void introMessage() {
 		
@@ -192,7 +192,7 @@ public class HannahTextGame {
 	}
 	
 	/**
-	 * User Input Method
+	 * User Input Method.
 	 * This method will intake user input and check to see
 	 * if it matches one of the commands. If so it will properely 
 	 * do whatever the command specifies and return "start over" so the 
@@ -254,7 +254,7 @@ public class HannahTextGame {
 	}
 	
     /** 
-	 * String Converter Method
+	 * String Converter Method.
 	 * This is a Homemade toString method to properly convert 
 	 * user input array after input is split into a string. 
 	 * @param userinput: Array of split user input
@@ -305,7 +305,7 @@ public class HannahTextGame {
 	// Specific Command Methods
 	
 	/**
-	 * Show Map Method
+	 * Show Map Method.
 	 * This method prints out the map only if the player has the map in invnentory
 	 */
 	public static void showMap () {
@@ -328,7 +328,7 @@ public class HannahTextGame {
 		
 	}
 	/**
-	 * Help Method
+	 * Help Method.
 	 * This method prints out a list of Commands that the user can enter 
 	 */
 	public static void help () {
@@ -341,8 +341,8 @@ public class HannahTextGame {
 		System.out.println("*need a specified item after command.\n");
 	}
 	/**
-	 * PLayer Satistics Method
-	 * This Method prints out all of the players current statistics 
+	 * PLayer Satistics Method.
+	 * This Method prints out all of the players current statistics,
 	 * including current location, current points, and inventory.
 	 */
 	public static void playerStats () {
@@ -352,8 +352,8 @@ public class HannahTextGame {
 		System.out.println("Inventory: " + player1.inventory);
 	}
 	/**
-	 * Backtrack Method
-	 * This method checks to see if there are any crumbs in trail 
+	 * Backtrack Method.
+	 * This method checks to see if there are any crumbs in trail, 
 	 * then it picks up the top crumb, then it checks again to see if there are 
 	 * any more crumbs and if there are it prints out the location of that crumb
 	 * and sets players location to the crumb.
@@ -375,7 +375,7 @@ public class HannahTextGame {
 	
 }
 	/**
-	 * Use Method
+	 * Use Method.
 	 * Loop to check every spot in inventory list and see if 
 	 * it matches up with the String of the user input. If so,
 	 * Then check to see if it is the limitedUseItem, which if so 
@@ -408,9 +408,9 @@ public class HannahTextGame {
 		
 	}
 	/**
-	 * Examine Method
-	 * This method checks if there is an item of there or not
-	 * if not then check if the item is discovered and if not it 
+	 * Examine Method.
+	 * This method checks if there is an item there or not.
+	 * if so, then check if the item is discovered and if not it 
 	 * makes it discoverable and prints message. 
 	 */
 	public static void examine() {

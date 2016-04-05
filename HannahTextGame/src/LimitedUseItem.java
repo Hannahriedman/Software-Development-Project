@@ -9,7 +9,6 @@ public class LimitedUseItem extends Item {
 	 * @param descrip: String of Description of the iem
 	 * @param use: String of what use does the item have
 	 * @param value: integer of amount of points item is worth
-	 * Not in item class:
 	 * @param remain: Integer to tell us how many uses remain for the object
 	 */
 	public LimitedUseItem(String name, String descrip,String use,int value,int remain) {
@@ -17,7 +16,7 @@ public class LimitedUseItem extends Item {
 		this.usesremaining = remain;
 	}
 	/**
-	 * Uses method
+	 * Uses method.
 	 * Checks to see if the item has uses remaining and then if it does it subtracts one
 	 * @return Boolean either true if it was sucessful to use or false if no more uses remain.
 	 */

@@ -18,8 +18,8 @@ public class Locale {
 		this.item    = item;
 	}
 	/**
-	 * This is a toString override method
-	 * It will check to see if an item at a location is null
+	 * This is a toString override method.
+	 * It will check to see if an item at a location is null,
 	 * or if the item is not discovered yet and if one of those is ture 
 	 * it returns a stirng with the name and descrip
 	 * Otherwise it will return a string with a name, descrip and item.name
