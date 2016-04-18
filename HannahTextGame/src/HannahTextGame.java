@@ -82,7 +82,7 @@ public class HannahTextGame {
 	static Locale hall =           new Locale(
 			"Hall",
 			"There is a door to the west.",
-			null);
+			key);
 	static Locale diningRoom =     new Locale(
 			"Dining Room",
 			"There is a door to the north.",
@@ -292,11 +292,16 @@ public class HannahTextGame {
 	 */
 	public static void move(int dir,String command) {
 		int nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale index
-	
+		Locale theLocation = locations[nextLocation]; // new desirered location as locale
+		
 		if (nextLocation != -1) {
-			System.out.println(locations[nextLocation]);
-			player1.location=nextLocation;
-			trail.dropCrumb(player1.location); // drops crumb at current location
+			if (theLocation.name.equals("Library") && library.cannotEnter(player1)) {
+				System.out.println("Sorry, you do not have the item to go to that location.");
+			} else {
+				System.out.println(theLocation);
+				player1.location=nextLocation;
+				trail.dropCrumb(player1.location); // drops crumb at current location
+			}
 		} else {
 			System.out.println("You can not go " + command + ".");
 			 

@@ -9,11 +9,11 @@ public class SecureLocale extends Locale {
 		
 	}
 	
-	public boolean canEnter(Player player) {
+	public boolean cannotEnter(Player player) {
 		if (player.inventory.contains(this.requiredItem)) {
-			return true;
+			return false; // returns false if you can enter location
 		} else {
-			return false;
+			return true; // returns true if you cannot enter
 		}
 	
 	}
