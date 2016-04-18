@@ -40,6 +40,7 @@ public class HannahTextGame {
 	static Item map1 =                  new Item("map","This is a map of the mansion.Type M to use it.","Type M to see map.",10);
 	static Item rope =                  new Item("rope","This is a thick braided rope.","The rope does nothing, you put it back.",5);
 	static Item knife =                 new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",10);
+	static Item key = 					new Item("key","This is a key","I wonder where the key goes",10);
 	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","You can use this candle 5 times.","The room is brighter now.",15,5);
 	
 	/**
@@ -64,10 +65,10 @@ public class HannahTextGame {
 			"Sitting Room",
 			"The curtains look ripped.",
 			candlestick);
-	static Locale library =        new Locale(
+	static SecureLocale library =        new SecureLocale(
 			"Library",
 			"The walls are lined with books.",
-			null);
+			null,key);
 	static Locale secretStairway = new Locale(
 			"Secret Stairway",
 			"I wonder where it leads. Go North to go on stairs\n"
