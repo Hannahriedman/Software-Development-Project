@@ -137,7 +137,10 @@ public class HannahTextGame {
 			// makes input case in-sensititive.
 		
 			direction = processDirection(userCommand); // changes input into directions/commands
-			
+			if (actionCount > 45) {
+				System.out.println("I am sorry, you have made too many moves, you lose.");
+				break;
+			}
 			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
 				break;  // quits game
 			} else if (direction.equals("start over")) {
@@ -176,6 +179,10 @@ public class HannahTextGame {
 	public static void byeMessage() {
 		
 		System.out.println("Thanks For Playing " + player1.name + " !\n"); 
+		System.out.println("Last Location: " + locations[player1.location].name);
+		System.out.println("Total Points: " + player1.score);
+		System.out.println("Inventory: " + player1.inventory);
+	
 		System.out.println("Creater: Hannah Riedman\n Copyright Hannah Games 2016");
 
 		 
@@ -304,9 +311,10 @@ public class HannahTextGame {
 	 */
 	public static void move(int dir,String command) {
 		int nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale index
-		Locale theLocation = locations[nextLocation]; // new desirered location as locale
-	// TO DO make this an instance of check instead
+		
+		// TO DO make this an instance of check instead
 		if (nextLocation != -1) {
+			Locale theLocation = locations[nextLocation]; // new desirered location as locale
 			if (theLocation.name.equals("Library") && library.cannotEnter(player1)) {
 				System.out.println("Sorry, you do not have the item to go to that location.");
 			} else {
