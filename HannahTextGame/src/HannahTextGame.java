@@ -24,6 +24,7 @@ public class HannahTextGame {
 	static int      location  = 0;  
 	static String   playerName;
 	static String[] inventory = new String[4];
+	static int      actionCount = 0;
 
 	// Cardinal directions
 	static int north = 0;
@@ -120,6 +121,7 @@ public class HannahTextGame {
 	 * Intialization of BreadcrumbTrail
 	 */
 	static LinkedTrail trail = new LinkedTrail();
+	 
 
 	public static void main(String[] args) {
 		
@@ -205,17 +207,22 @@ public class HannahTextGame {
     public static String processDirection(String userCommand) {
 		String direction = null;
 		
+		
 		if (userCommand.equals("N")) { 
 			direction = "North";
+			actionCount += 1;
 			move(north,direction);
 		} else if (userCommand.equals("E")) { 
 			direction = "East";
+			actionCount += 1;
 			move(east,direction);
 		} else if (userCommand.equals("S")) { 
 			direction = "South";
+			actionCount += 1;
 			move(south,direction);
 		} else if (userCommand.equals("W")) { 
 			direction = "West";
+			actionCount += 1;
 			move(west,direction);
 		} else if (userCommand.equals("Q")) {
 			return "quit"; 
@@ -224,13 +231,16 @@ public class HannahTextGame {
 			return "start over"; 
 		} else if (userCommand.startsWith("T")) {
 			String item = stringConverter(userCommand.split("T "));
+			actionCount += 1;
 			player1.take(locations,item);
 			return "start over"; 
 		} else if (userCommand.equals("B")) {
+			actionCount += 1;
 			backtrack();
 			return "start over"; 
 		} else if (userCommand.startsWith("D")) {
 			String item = stringConverter(userCommand.split("D "));
+			actionCount += 1;
 			player1.drop(locations,item);
 			return "start over"; 
 		} else if (userCommand.equals("P")) {
@@ -238,9 +248,11 @@ public class HannahTextGame {
 			return "start over"; 
 		} else if (userCommand.startsWith("U")) {
 			String item = stringConverter(userCommand.split("U "));
+			actionCount += 1;
 			use(item); 
 			return "start over"; 
 		} else if (userCommand.equals("X")) {
+			actionCount += 1;
 			examine(); 
 			return "start over"; 
 		} else if (userCommand.equals("H")) {
@@ -293,7 +305,7 @@ public class HannahTextGame {
 	public static void move(int dir,String command) {
 		int nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale index
 		Locale theLocation = locations[nextLocation]; // new desirered location as locale
-		
+	// TO DO make this an instance of check instead
 		if (nextLocation != -1) {
 			if (theLocation.name.equals("Library") && library.cannotEnter(player1)) {
 				System.out.println("Sorry, you do not have the item to go to that location.");
