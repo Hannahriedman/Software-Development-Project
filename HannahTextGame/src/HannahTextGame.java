@@ -137,10 +137,20 @@ public class HannahTextGame {
 			// makes input case in-sensititive.
 		
 			direction = processDirection(userCommand); // changes input into directions/commands
-			if (actionCount > 45) {
+			
+			// checks to see if user loses or wins the game
+			if (actionCount > 45) { // fails game when exceeds certain action count
 				System.out.println("I am sorry, you have made too many moves, you lose.");
 				break;
+			} else if (player1.inventory.size() == 5) { // wins when collects all items
+				System.out.println("Congrats! You have collected all the clues!");
+				System.out.println("What item is the murder weapon? ");
+				userCommand = keyboard.nextLine();
+				System.out.println("You are right Detetive " + player1.name + "! It was the "
+									+ userCommand);
+				break;
 			}
+			
 			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
 				break;  // quits game
 			} else if (direction.equals("start over")) {
