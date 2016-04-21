@@ -200,7 +200,12 @@ public class HannahTextGame {
 			player1.gender = "Gender Neutral";
 		};
 	}
-	
+	/**
+	 * Game Status Method
+	 * tests to see if player win, loses or can continue playing the game 
+	 * @return String "quit" or "start over" that will either break out of loop or 
+	 * continue with the game.
+	 */
 	public static String gameStatus() {
 		String userCommand;
 		
