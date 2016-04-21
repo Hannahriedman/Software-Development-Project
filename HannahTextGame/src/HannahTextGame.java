@@ -322,11 +322,10 @@ public class HannahTextGame {
 	public static void move(int dir,String command) {
 		int nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale index
 		
-		// TO DO make this an instance of check instead
 		if (nextLocation != -1) {
 			Locale theLocation = locations[nextLocation]; // new desirered location as locale
-			if (theLocation.name.equals("Library") && library.cannotEnter(player1)) {
-				System.out.println("Sorry, you do not have the item to go to that location.");
+			if (theLocation instanceof SecureLocale && ((SecureLocale) theLocation).cannotEnter(player1) ) {
+				System.out.println("Sorry, you do not have the key to unlock the door.");
 			} else {
 				System.out.println(theLocation);
 				player1.location=nextLocation;
