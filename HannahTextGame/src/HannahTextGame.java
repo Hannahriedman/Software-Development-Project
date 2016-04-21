@@ -66,7 +66,7 @@ public class HannahTextGame {
 			"Sitting Room",
 			"The curtains look ripped.",
 			candlestick);
-	static SecureLocale library =        new SecureLocale(
+	static SecureLocale library =  new SecureLocale(
 			"Library",
 			"The walls are lined with books.",
 			null,key);
@@ -127,6 +127,7 @@ public class HannahTextGame {
 		
 		String direction;  // variable declarations 
 		String userCommand;
+		String userStatus;
 		
 		introMessage(); // method starts game and gets input from Player.
 		
@@ -138,22 +139,11 @@ public class HannahTextGame {
 		
 			direction = processDirection(userCommand); // changes input into directions/commands
 			
-			// checks to see if user loses or wins the game
-			if (actionCount > 45) { // fails game when exceeds certain action count
-				System.out.println("I am sorry, you have made too many moves, you lose.");
-				break;
-			} else if (player1.inventory.size() == 5) { // wins when collects all items
-				System.out.println("Congrats! You have collected all the clues!");
-				System.out.println("What item is the murder weapon? ");
-				userCommand = keyboard.nextLine();
-				System.out.println("You are right Detetive " + player1.name + "! It was the "
-									+ userCommand);
-				break;
-			}
+			userStatus = gameStatus();// checks to see if user loses, wins, or keeps playing the game
 			
-			if (direction.equals("quit")) {  // checks to see if you want to start over or quit
+			if (direction.equals("quit") || userStatus.equals("quit")) {  // checks to see if you want to start over or quit
 				break;  // quits game
-			} else if (direction.equals("start over")) {
+			} else if (direction.equals("start over") || userStatus.equals("start over")) {
 				continue; // starts loop over 
 			}    
 
@@ -209,6 +199,26 @@ public class HannahTextGame {
 		} else {
 			player1.gender = "Gender Neutral";
 		};
+	}
+	
+	public static String gameStatus() {
+		String userCommand;
+		
+		if (actionCount > 45) { // fails game when exceeds certain action count
+			System.out.println("I am sorry, you have made too many moves, you lose.");
+			return "quit";
+		} else if (player1.inventory.size() == 5) { // wins when collects all items
+			System.out.println("Congrats! You have collected all the clues!");
+			System.out.println("What item is the murder weapon? ");
+			userCommand = keyboard.nextLine();
+			System.out.println("You are right Detetive " + player1.name + "! It was the "
+								+ userCommand);
+			return "quit"; 
+		} else {
+			return "start over";
+		}
+		
+		
 	}
 	
 	/**
