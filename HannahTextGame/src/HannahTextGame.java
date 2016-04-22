@@ -93,7 +93,7 @@ public class HannahTextGame {
 	 * Location Array to keep all location Locale's
 	 */
 	static Locale [] locations={outside,foyer,study,sittingRoom,library,secretStairway,kitchen,hall,diningRoom};
-								// 0      1      2       3          4          5         6      7      8
+	 							// 0      1      2       3          4          5         6      7      8
 	/**
 	 * Matrix map to navigate the game.
 	 * Uses integers to represent the index of the location in the Location array above,
