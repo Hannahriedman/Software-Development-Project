@@ -200,6 +200,7 @@ public class HannahTextGame {
 			player1.gender = "Gender Neutral";
 		};
 	}
+	
 	/**
 	 * Game Status Method
 	 * tests to see if player win, loses or can continue playing the game 
@@ -339,6 +340,7 @@ public class HannahTextGame {
 		
 		if (nextLocation != -1) {
 			Locale theLocation = locations[nextLocation]; // new desirered location as locale
+			// this if else will check to see if the mext location is a secure location and if the player can enter it
 			if (theLocation instanceof SecureLocale && ((SecureLocale) theLocation).cannotEnter(player1) ) {
 				System.out.println("Sorry, you do not have the key to unlock the door.");
 			} else {
