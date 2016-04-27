@@ -91,14 +91,18 @@ public class Player {
 	public void dust(String item) {
 		String itemToDust = item;
 		Item   checkItem;
+		int check = 0;
 		
 		for (int i=0;i<this.inventory.size();i++){
 			checkItem =this.inventory.get(i);
 			if (checkItem.name.equals(itemToDust)) {
 				System.out.println(checkItem.prints);
-			
+				check+=1;
 			} 
 			
+		}
+		if (check==0) {
+			System.out.println("You do not have the " + itemToDust);
 		}
 		
 	}

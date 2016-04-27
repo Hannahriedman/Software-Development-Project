@@ -180,8 +180,10 @@ public class HannahTextGame {
 		System.out.println(locations[0]); // start of game
 		trail.dropCrumb(player1.location); // puts first breadcrumb down at start location
 		System.out.println("*************************************");
-		System.out.println("Hello Detective " + player1.name +"! You can navigate the game by using\n" 
-				+ "N,E,S,W commands.Type H to get a list of all commands, Go North to the door to start the adventure!");
+		System.out.println("Hello Detective " + player1.name +"! You have been called to investigate\nthe murder of "
+				+ "Nick Carraway in the Buchanan residence.\n\nLook for clues and figure out the murderer, the murder"
+				+ "weapon,\nand the room the crime was committed in.\n\nYou can navigate the game by using H" 
+				+ "N,E,S,W commands.\nType H to get a list of all commands,\nGo North to the door to start the adventure!");
 	}
 	public static void byeMessage() {
 		
@@ -222,12 +224,23 @@ public class HannahTextGame {
 			return "quit";
 		} else if (player1.inventory.size() == 5) { // wins when collects all items
 			System.out.println("Congrats! You have collected all the clues!");
+			player1.score+=10;
 			System.out.println("Would you like to keep playing? Y or N");
 			userCommand = keyboard.nextLine();
 			if (userCommand.toUpperCase().equals("Y")) {
 				return "start over";
 			}
 			return "quit"; 
+		} else if (sittingRoom.item.equals(rope)) {
+			System.out.println("Congrats! You have figured out the murder "
+					+ "weapon and room.\nDo you know who is the murderer?");
+			userCommand = keyboard.nextLine();
+			if (userCommand.toUpperCase().equals("MR.MONEY")) {
+				System.out.println("Correct! It was Mr.Money, with the rope, "
+						+ "in the sitting room. You have Won the game!!");
+				player1.score+=20;
+			}
+			return "quit";
 		} else {
 			return "start over";
 		}
@@ -406,7 +419,8 @@ public class HannahTextGame {
 		System.out.println("'N','E','S','W' to go in the cardnial directions");
 		System.out.println("'Q' to quit the game\n'M' to see Map\n'T' to take item*\n"
 				          + "'D' to drop item*\n'P' to see player stats\n"+ 
-				          "'X' to examine location for item\n'U' to use item*");
+				          "'X' to examine location for item\n'U' to use item*\n"
+				          + "'Dust' to dust item for fingerprints.*");
 		System.out.println("*need a specified item after command.\n");
 	}
 	/**
