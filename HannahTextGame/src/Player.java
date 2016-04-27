@@ -88,5 +88,19 @@ public class Player {
 		
 	}
 	
+	public void dustForPrints(String item) {
+		String itemToDust = item;
+		Item   checkItem;
+		
+		for (int i=0;i<this.inventory.size();i++){
+			checkItem =this.inventory.get(i);
+			if (checkItem.name.equals(itemToDust)) {
+				System.out.println(checkItem.prints);
+			
+			} 
+			
+		}
+		
+	}
 	
 }

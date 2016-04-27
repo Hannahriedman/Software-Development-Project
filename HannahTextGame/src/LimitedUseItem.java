@@ -11,8 +11,8 @@ public class LimitedUseItem extends Item {
 	 * @param value: integer of amount of points item is worth
 	 * @param remain: Integer to tell us how many uses remain for the object
 	 */
-	public LimitedUseItem(String name, String descrip,String use,int value,int remain) {
-		super(name, descrip, use, value);
+	public LimitedUseItem(String name, String descrip,String use,String prints,int value,int remain) {
+		super(name, descrip, use, prints, value);
 		this.usesremaining = remain;
 	}
 	/**

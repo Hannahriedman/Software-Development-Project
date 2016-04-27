@@ -6,6 +6,7 @@ public class Item {
 	public int     value;
 	public boolean isDiscoverd;
 	public String  use;
+	public String  prints;
 /**	
  * Item class 
  * @param name: String of name of the item
@@ -17,10 +18,11 @@ public class Item {
  * default is false 
  * 
  */
-	public Item (String name,String descrip,String use,int value) {
+	public Item (String name,String descrip,String use,String prints,int value) {
 		this.name        = name;
 		this.descrip     = descrip;
 		this.use         = use;
+		this.prints      = prints;
 		this.value       = value;
 		this.isDiscoverd = false;
 	}

@@ -38,12 +38,18 @@ public class HannahTextGame {
 	 * Initalizations of Items.
 	 * 3 Items and 1 LimitedUseItem
 	 */
-	static Item map1 =                  new Item("map","This is a map of the mansion.Type M to use it.","Type M to see map.",10);
-	static LimitedUseItem rope =        new LimitedUseItem("rope","This is a thick braided rope. It can be used a limited number of times.","You made a knot in the rope.",5,2);
-	static Item knife =                 new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",10);
-	static Item key = 					new Item("key","This is a key","I wonder where the key goes",10);
-	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","You can use this candle a limited number of times.","The room is brighter now.",15,5);
-	
+	static Item map1 =                  new Item("map","This is a map of the mansion.Type M to use it.",
+												"Type M to see map.","There are no prints",10);
+	static LimitedUseItem rope =        new LimitedUseItem("rope","This is a thick braided rope. It can be used a limited number of times.",
+												"You made a knot in the rope.","This has Mr.Money's prints.",5,2);
+	static Item knife =                 new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",
+												"This has the Chef's prints. The blood is from cow orgins.",10);
+	static Item key = 					new Item("key","This is a key","I wonder where the key goes",
+												"There are no prints.",10);
+	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","You can use this candle a limited number of times.",
+												"The room is brighter now.","There are no prints.",15,5);
+	static Item book = 					new Item("book","Looks like this is from the library.",
+												"There is a note in the book, it says 'After Dinner meet me in the sitting room.'","There is the maid's and Nick's prints.",8);
 	/**
 	 * Initalizations of Locations.
 	 * 9 Locations
@@ -61,7 +67,7 @@ public class HannahTextGame {
 	static Locale study =          new Locale(
 			"Study",
 			"To the North is a door.",
-			null);
+			book);
 	static Locale sittingRoom =    new Locale(
 			"Sitting Room",
 			"The curtains look ripped.",
@@ -70,11 +76,11 @@ public class HannahTextGame {
 			"Library",
 			"The walls are lined with books.",
 			null,key);
-	static Locale secretStairway = new Locale(
+	static Locale secretStairway = new SecureLocale(
 			"Secret Stairway",
 			"I wonder where it leads. Go North to go on stairs\n"
 			+ "or East to go to the Library.",
-			null);
+			null,book);
 	static Locale kitchen =        new Locale(
 			"Kitchen",
 			"The Kitchen looks messy like there might have been a fight."
@@ -342,7 +348,11 @@ public class HannahTextGame {
 			Locale theLocation = locations[nextLocation]; // new desirered location as locale
 			// this if else will check to see if the mext location is a secure location and if the player can enter it
 			if (theLocation instanceof SecureLocale && ((SecureLocale) theLocation).cannotEnter(player1) ) {
-				System.out.println("Sorry, you do not have the key to unlock the door.");
+				if (theLocation.equals(library)) {
+					System.out.println("Sorry, you do not have the key to go that way.");
+				} else {
+					System.out.println("There is a bookcase with a book missing.");
+				}
 			} else {
 				System.out.println(theLocation);
 				player1.location=nextLocation;
@@ -480,7 +490,7 @@ public class HannahTextGame {
 		}
 		
 	}	
-		
+	
 		
 }
 
