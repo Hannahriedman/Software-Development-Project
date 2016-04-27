@@ -231,16 +231,20 @@ public class HannahTextGame {
 				return "start over";
 			}
 			return "quit"; 
-		} else if (sittingRoom.item.equals(rope)) {
-			System.out.println("Congrats! You have figured out the murder "
-					+ "weapon and room.\nDo you know who is the murderer?");
-			userCommand = keyboard.nextLine();
-			if (userCommand.toUpperCase().equals("MR.MONEY")) {
-				System.out.println("Correct! It was Mr.Money, with the rope, "
-						+ "in the sitting room. You have Won the game!!");
-				player1.score+=20;
-			}
-			return "quit";
+		} else if (sittingRoom.item != null) { 
+			if (sittingRoom.item.equals(rope)) {
+				System.out.println("Congrats! You have figured out the murder "
+						+ "weapon and room.\nDo you know who is the murderer?");
+				userCommand = keyboard.nextLine();
+				if (userCommand.toUpperCase().equals("MR.MONEY")) {
+					System.out.println("Correct! It was Mr.Money, with the rope, "
+							+ "in the sitting room. You have Won the game!!");
+					player1.score+=20;
+				} else {
+					System.out.println("You lose, The murderer was not " + userCommand);
+				}
+				return "quit";
+			} return "start over";
 		} else {
 			return "start over";
 		}
