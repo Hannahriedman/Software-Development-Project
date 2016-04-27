@@ -88,7 +88,7 @@ public class Player {
 		
 	}
 	
-	public void dustForPrints(String item) {
+	public void dust(String item) {
 		String itemToDust = item;
 		Item   checkItem;
 		

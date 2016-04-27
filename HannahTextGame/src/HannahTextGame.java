@@ -36,7 +36,7 @@ public class HannahTextGame {
 	
 	/**
 	 * Initalizations of Items.
-	 * 3 Items and 1 LimitedUseItem
+	 * 4 Items and 2 LimitedUseItem
 	 */
 	static Item map1 =                  new Item("map","This is a map of the mansion.Type M to use it.",
 												"Type M to see map.","There are no prints",10);
@@ -49,7 +49,8 @@ public class HannahTextGame {
 	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","You can use this candle a limited number of times.",
 												"The room is brighter now.","There are no prints.",15,5);
 	static Item book = 					new Item("book","Looks like this is from the library.",
-												"There is a note in the book, it says 'After Dinner meet me in the sitting room.'","There is the maid's and Nick's prints.",8);
+												"There is a note in the book, it says 'After Dinner meet me in the sitting room.'",
+												"There is the maid's and Nick's prints.",8);
 	/**
 	 * Initalizations of Locations.
 	 * 9 Locations
@@ -221,10 +222,11 @@ public class HannahTextGame {
 			return "quit";
 		} else if (player1.inventory.size() == 5) { // wins when collects all items
 			System.out.println("Congrats! You have collected all the clues!");
-			System.out.println("What item is the murder weapon? ");
+			System.out.println("Would you like to keep playing? Y or N");
 			userCommand = keyboard.nextLine();
-			System.out.println("You are right Detetive " + player1.name + "! It was the "
-								+ userCommand);
+			if (userCommand.toUpperCase().equals("Y")) {
+				return "start over";
+			}
 			return "quit"; 
 		} else {
 			return "start over";
@@ -276,6 +278,11 @@ public class HannahTextGame {
 		} else if (userCommand.equals("B")) {
 			actionCount += 1;
 			backtrack();
+			return "start over"; 
+		} else if (userCommand.startsWith("DUST")) {
+			String item = stringConverter(userCommand.split("DUST "));
+			actionCount += 1;
+			player1.dust(item);
 			return "start over"; 
 		} else if (userCommand.startsWith("D")) {
 			String item = stringConverter(userCommand.split("D "));
@@ -451,8 +458,8 @@ public class HannahTextGame {
 		for (int i=0;i<player1.inventory.size();i++){
 			Item checkItem =player1.inventory.get(i);
 			if (checkItem.name.equals(itemToUse)) {
-				if (checkItem.name.equals("candlestick")) {
-					if (candlestick.uses()) {
+				if (checkItem instanceof LimitedUseItem) {
+					if (((LimitedUseItem) checkItem).uses()) {
 						System.out.println("You now have the " + itemToUse + " Equiped.");
 						System.out.println(checkItem.use);
 					} else {
