@@ -39,10 +39,10 @@ public class HannahTextGame {
 	 * 3 Items and 1 LimitedUseItem
 	 */
 	static Item map1 =                  new Item("map","This is a map of the mansion.Type M to use it.","Type M to see map.",10);
-	static Item rope =                  new Item("rope","This is a thick braided rope.","The rope does nothing, you put it back.",5);
+	static LimitedUseItem rope =        new LimitedUseItem("rope","This is a thick braided rope. It can be used a limited number of times.","You made a knot in the rope.",5,2);
 	static Item knife =                 new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",10);
 	static Item key = 					new Item("key","This is a key","I wonder where the key goes",10);
-	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","You can use this candle 5 times.","The room is brighter now.",15,5);
+	static LimitedUseItem candlestick = new LimitedUseItem("candlestick","You can use this candle a limited number of times.","The room is brighter now.",15,5);
 	
 	/**
 	 * Initalizations of Locations.
