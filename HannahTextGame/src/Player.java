@@ -6,6 +6,7 @@ public class Player {
 	public String          name;
 	public int             location  = 0;
 	public String          gender;
+	public String 		   trait;
 	public int             score     = 0;
 	public ArrayList<Item> inventory;
 	/**
@@ -17,11 +18,12 @@ public class Player {
 	 * 
 	 * score: interger of players score. default is at 0.
 	 */
-	public Player(String name, int loc,String gender,String [] inventory) {
+	public Player(String name, int loc,String gender,String trait,String [] inventory) {
 		this.name      = name;
 		this.location  = loc;
 		this.score     = 0;
 		this.gender    = gender;
+		this.trait 	   = trait;
 		this.inventory = new ArrayList<Item>();
 		
 		

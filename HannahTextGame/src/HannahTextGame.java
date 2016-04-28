@@ -21,6 +21,7 @@ public class HannahTextGame {
 	
 	// Player variables
 	static String   gender;
+	static String   trait;
 	static int      location  = 0;  
 	static String   playerName;
 	static String[] inventory = new String[4];
@@ -122,7 +123,7 @@ public class HannahTextGame {
 	/**
 	 * Initaixation of player 
 	 */
-	static Player player1 =    new Player(playerName,location,gender,inventory);
+	static Player player1 =    new Player(playerName,location,gender,trait,inventory);
 	
 	/**
 	 * Intialization of BreadcrumbTrail
@@ -176,6 +177,9 @@ public class HannahTextGame {
 		System.out.print("What is your character's gender?(m or f)");
 		gender = keyboard.nextLine(); 
 		playerGender(gender); // converts input into actual gender
+		System.out.println("Is your character Observent(O) or Charismatic(C)?");
+		trait = keyboard.nextLine();
+		playerTrait(trait);
 		
 		System.out.println(locations[0]); // start of game
 		trail.dropCrumb(player1.location); // puts first breadcrumb down at start location
@@ -210,6 +214,16 @@ public class HannahTextGame {
 		};
 	}
 	
+	public static void playerTrait(String trait) {
+		if (trait.toUpperCase().equals("O")) {
+			player1.trait = "Observent";
+		} else if (trait.toUpperCase().equals("C")) {
+			player1.trait = "Charismatic";
+		} else {
+			player1.trait = "normal";
+		}
+		
+	}
 	/**
 	 * Game Status Method
 	 * tests to see if player win, loses or can continue playing the game 
