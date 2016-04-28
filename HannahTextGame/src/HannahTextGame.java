@@ -97,6 +97,16 @@ public class HannahTextGame {
 			"There is a door to the north.",
 			rope);
 	
+	static Npc chef = new Npc("Chef Charlie",6,"");
+	static Npc butler = new Npc("Butler Bart",1,"");
+	static Npc maid = new Npc("Maid Mary",7,"");
+	static Npc laura = new Npc("Laura Lavender",8,"");
+	static Npc jack = new Npc("Jack Jade",2,"");
+	static Npc paul = new Npc("Paul Periwinkle",4,"");
+	static Npc sarah = new Npc("Sarah Silver",3,"");
+	
+	
+	
 	/**
 	 * Location Array to keep all location Locale's
 	 */
@@ -178,14 +188,14 @@ public class HannahTextGame {
 		gender = keyboard.nextLine(); 
 		playerGender(gender); // converts input into actual gender
 		System.out.println("Is your character Observent(O) or Charismatic(C)?");
-		trait = keyboard.nextLine();
-		playerTrait(trait);
+		trait = keyboard.nextLine(); 
+		playerTrait(trait); // converts input into full character trait
 		
 		System.out.println(locations[0]); // start of game
 		trail.dropCrumb(player1.location); // puts first breadcrumb down at start location
 		System.out.println("*************************************");
 		System.out.println("Hello Detective " + player1.name +"! You have been called to investigate\nthe murder of "
-				+ "Nick Carraway in the Buchanan residence.\n\nLook for clues and figure out the murderer, the murder"
+				+ "Nick Carraway in the Periwinkle residence.\n\nLook for clues and figure out the murderer, the murder"
 				+ "weapon,\nand the room the crime was committed in.\n\nYou can navigate the game by using H" 
 				+ "N,E,S,W commands.\nType H to get a list of all commands,\nGo North to the door to start the adventure!");
 	}
@@ -213,7 +223,7 @@ public class HannahTextGame {
 			player1.gender = "Gender Neutral";
 		};
 	}
-	
+	// small method for player trait
 	public static void playerTrait(String trait) {
 		if (trait.toUpperCase().equals("O")) {
 			player1.trait = "Observent";
