@@ -52,6 +52,32 @@ public class HannahTextGame {
 	static Item book = 					new Item("book","Looks like this is from the library.",
 												"There is a note in the book, it says 'After Dinner meet me in the sitting room.'",
 												"There is the maid's and Nick's prints.",8);
+	
+	static Npc chef = new Npc("Chef Charlie",6,
+							  "I was in here cleaning up after dinner.",
+							  "I was in here cleanig up after dinner.",
+							  "The Chef is telling the truth.");
+	static Npc maid = new Npc("Maid Mary",7,
+							  "I was cleaning in the Foyer but i saw Mr.Jade go into the sitting room",
+							  "I was cleaning in the Foyer",
+							  "The Maid is telling the truth");
+	static Npc laura = new Npc("Laura Lavender",8,
+							   "I was in the Foyer and the maid was cleaning.",
+							   "I was in the dining room",
+							   "Laura is not telling the truth");
+	static Npc jack = new Npc("Jack Jade",2,
+							 "I was in the ",
+							 "I was in the study reading a book",
+							 "Jack is not telling the truth");
+	static Npc paul = new Npc("Paul Periwinkle",4,
+							  "I was heading to the kitchen to get another drink",
+							  "I was in the dining room with Laura",
+							  "Mr.Periwinkle is not telling the truth");
+	static Npc sarah = new Npc("Sarah Silver",3,
+							  "I was in the study alone.",
+							  "I was in the study",
+							  "Sarah is telling the truth.");
+	
 	/**
 	 * Initalizations of Locations.
 	 * 9 Locations
@@ -60,50 +86,44 @@ public class HannahTextGame {
 			"Outside",
 			"You arrive at the creepy mansion in the dark of night.\n"
 			+ "There is a large door in front of you.",
-			null);
+			null,null);
 	static Locale foyer =          new Locale(
 			"Foyer",
 			"There is a study to the East and sitting room\n"
 			+ "to the West. To the North is a hall.",
-			map1);
+			map1,null);
 	static Locale study =          new Locale(
 			"Study",
 			"To the North is a door.",
-			book);
+			book,jack);
 	static Locale sittingRoom =    new Locale(
 			"Sitting Room",
 			"The curtains look ripped.",
-			candlestick);
-	static SecureLocale library =  new SecureLocale(
+			candlestick,sarah);
+	static SecureLocale library =        new SecureLocale(
 			"Library",
 			"The walls are lined with books.",
-			null,key);
-	static Locale secretStairway = new SecureLocale(
+			null,paul,key);
+	static SecureLocale secretStairway = new SecureLocale(
 			"Secret Stairway",
 			"I wonder where it leads. Go North to go on stairs\n"
 			+ "or East to go to the Library.",
-			null,book);
+			null,null,book);
 	static Locale kitchen =        new Locale(
 			"Kitchen",
 			"The Kitchen looks messy like there might have been a fight."
 			+ "There is a door to the south.",
-			knife);
+			knife,chef);
 	static Locale hall =           new Locale(
 			"Hall",
 			"There is a door to the west.",
-			key);
+			key,maid);
 	static Locale diningRoom =     new Locale(
 			"Dining Room",
 			"There is a door to the north.",
-			rope);
+			rope,laura);
 	
-	static Npc chef = new Npc("Chef Charlie",6,"");
-	static Npc butler = new Npc("Butler Bart",1,"");
-	static Npc maid = new Npc("Maid Mary",7,"");
-	static Npc laura = new Npc("Laura Lavender",8,"");
-	static Npc jack = new Npc("Jack Jade",2,"");
-	static Npc paul = new Npc("Paul Periwinkle",4,"");
-	static Npc sarah = new Npc("Sarah Silver",3,"");
+	
 	
 	
 	
@@ -195,8 +215,9 @@ public class HannahTextGame {
 		trail.dropCrumb(player1.location); // puts first breadcrumb down at start location
 		System.out.println("*************************************");
 		System.out.println("Hello Detective " + player1.name +"! You have been called to investigate\nthe murder of "
-				+ "Nick Carraway in the Periwinkle residence.\n\nLook for clues and figure out the murderer, the murder"
-				+ "weapon,\nand the room the crime was committed in.\n\nYou can navigate the game by using H" 
+				+ "Mrs.Periwinkle.\n\nLook for clues and figure out the murderer, the murder weapon,\n"
+				+ "and the room the crime was committed in.\n\nWhen you think you know the answer, drop the\n"
+				+ "murder item in the room the crime was committed.\n\nYou can navigate the game by using " 
 				+ "N,E,S,W commands.\nType H to get a list of all commands,\nGo North to the door to start the adventure!");
 	}
 	public static void byeMessage() {
@@ -259,9 +280,11 @@ public class HannahTextGame {
 			if (sittingRoom.item.equals(rope)) {
 				System.out.println("Congrats! You have figured out the murder "
 						+ "weapon and room.\nDo you know who is the murderer?");
+				System.out.println("Chef Charlie, Maid Mary, Laura Lavender,\n"
+						+ "	Jack Jade, Paul Periwinkle, or Sarah Silver");
 				userCommand = keyboard.nextLine();
-				if (userCommand.toUpperCase().equals("MR.MONEY")) {
-					System.out.println("Correct! It was Mr.Money, with the rope, "
+				if (userCommand.toUpperCase().equals("JACK JADE")) {
+					System.out.println("Correct! It was Mr.Jade, with the rope, "
 							+ "in the sitting room. You have Won the game!!");
 					player1.score+=20;
 				} else {
@@ -310,6 +333,9 @@ public class HannahTextGame {
 			return "quit"; 
 		} else if (userCommand.equals("M")) {
 			showMap();
+			return "start over"; 
+		} else if (userCommand.equals("TALK")) {
+			//talk method
 			return "start over"; 
 		} else if (userCommand.startsWith("T")) {
 			String item = stringConverter(userCommand.split("T "));
@@ -448,7 +474,8 @@ public class HannahTextGame {
 		System.out.println("'Q' to quit the game\n'M' to see Map\n'T' to take item*\n"
 				          + "'D' to drop item*\n'P' to see player stats\n"+ 
 				          "'X' to examine location for item\n'U' to use item*\n"
-				          + "'Dust' to dust item for fingerprints.*");
+				          + "'Dust' to dust item for fingerprints.*\n'Talk' to talk to "
+				          + "a character");
 		System.out.println("*need a specified item after command.\n");
 	}
 	/**
@@ -540,7 +567,23 @@ public class HannahTextGame {
 		
 	}	
 	
+	public static void talk() {
+		Locale currentLocation = locations[player1.location];
+		Npc person = currentLocation.person;
+		System.out.println("You approach " + person.name + 
+				". You ask them where they were during the murder.");
 		
+		if (player1.trait.equals("Charismatic")) {
+			System.out.println(person.dialogue1);
+		} else if (player1.trait.equals("Observent")) {
+			System.out.println(person.dialogue2);
+			System.out.println(person.observent);
+		} else {
+			System.out.println(person.dialogue2);
+		}
+		
+		
+	}
 }
 
 	

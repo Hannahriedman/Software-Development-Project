@@ -13,8 +13,8 @@ public class SecureLocale extends Locale {
 	 * unlock this secure location
 	 */
 	
-	public SecureLocale(String name, String descrip, Item item, Item required) {
-		super(name, descrip, item);
+	public SecureLocale(String name, String descrip, Item item, Npc person, Item required) {
+		super(name, descrip, item,person);
 		this.requiredItem = required;
 		
 	}
