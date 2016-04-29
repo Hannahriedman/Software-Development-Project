@@ -55,11 +55,15 @@ public class HannahTextGame {
 												"There is a note in the book, it says 'After Dinner meet me in the sitting room.'",
 												"There is the maid's and Mrs.Periwinkle's prints.",8);
 	
-	static Npc chef = new Npc("Chef Charlie",6,
+	/**
+	 * Initalization of Npc.
+	 * 6 Npc's
+	 */
+	static Npc chef =  new Npc("Chef Charlie",6,
 							  "He says 'I was in here cleaning up after dinner.'",
 							  "He says 'I was in here cleanig up after dinner.'",
 							  "The Chef is telling the truth.");
-	static Npc maid = new Npc("Maid Megan",7,
+	static Npc maid =  new Npc("Maid Megan",7,
 							  "She says 'I was cleaning in the Foyer but i saw Mr.Jade go into the sitting room'",
 							  "She says 'I was cleaning in the Foyer'",
 							  "The Maid is telling the truth");
@@ -67,11 +71,11 @@ public class HannahTextGame {
 							   "She says 'I was in the Foyer and the maid was cleaning.'",
 							   "She says 'I was in the dining room'",
 							   "Laura is not telling the truth");
-	static Npc jack = new Npc("Jack Jade",2,
+	static Npc jack =  new Npc("Jack Jade",2,
 							 "He says 'I was in the sitting room.' ",
 							 "He says 'I was in the study reading a book'",
 							 "Jack is not telling the truth");
-	static Npc paul = new Npc("Paul Periwinkle",4,
+	static Npc paul =  new Npc("Paul Periwinkle",4,
 							  "He says 'I was heading to the kitchen to get another drink'",
 							  "He says 'I was in the dining room with Laura'",
 							  "Mr.Periwinkle is not telling the truth");
@@ -84,21 +88,21 @@ public class HannahTextGame {
 	 * Initalizations of Locations.
 	 * 9 Locations
 	 */
-	static Locale outside =        new Locale(
+	static Locale outside =              new Locale(
 			"Outside",
 			"You arrive at the creepy mansion in the dark of night.\n"
 			+ "There is a large door in front of you.",
 			null,null);
-	static Locale foyer =          new Locale(
+	static Locale foyer =                new Locale(
 			"Foyer",
 			"There is a study to the East and sitting room\n"
 			+ "to the West. To the North is a hall.",
 			map1,null);
-	static Locale study =          new Locale(
+	static Locale study =                new Locale(
 			"Study",
 			"To the North is a door.",
 			book,jack);
-	static Locale sittingRoom =    new Locale(
+	static Locale sittingRoom =          new Locale(
 			"Sitting Room",
 			"The curtains look ripped.",
 			candlestick,sarah);
@@ -111,16 +115,16 @@ public class HannahTextGame {
 			"I wonder where it leads. Go North to go on stairs\n"
 			+ "or East to go to the Library.",
 			null,null,book);
-	static Locale kitchen =        new Locale(
+	static Locale kitchen =              new Locale(
 			"Kitchen",
 			"The Kitchen looks messy like there might have been a fight."
 			+ "There is a door to the south.",
 			knife,chef);
-	static Locale hall =           new Locale(
+	static Locale hall =                 new Locale(
 			"Hall",
 			"There is a door to the west.",
 			key,maid);
-	static Locale diningRoom =     new Locale(
+	static Locale diningRoom =           new Locale(
 			"Dining Room",
 			"There is a door to the north.",
 			rope,laura);
@@ -267,9 +271,6 @@ public class HannahTextGame {
 	public static String gameStatus() {
 		String userCommand;
 		
-		
-		System.out.println(player1.inventory.size());
-		System.out.println(size);
 		if (actionCount > 45) { // fails game when exceeds certain action count
 			System.out.println("I am sorry, you have made too many moves, you lose.");
 			return "quit";
@@ -425,6 +426,7 @@ public class HannahTextGame {
 	public static void move(int dir,String command) {
 		int nextLocation = from(dir);// takes cardinal dir (0,1,2,3) and returns locale index
 		
+		
 		if (nextLocation != -1) {
 			Locale theLocation = locations[nextLocation]; // new desirered location as locale
 			// this if else will check to see if the mext location is a secure location and if the player can enter it
@@ -432,7 +434,11 @@ public class HannahTextGame {
 				if (theLocation.equals(library)) {
 					System.out.println("Sorry, you do not have the key to go that way.");
 				} else {
-					System.out.println("There is a bookcase with a book missing.");
+					if (locations[player1.location].name.equals("Kitchen")) {
+						System.out.println("You can not go East.");
+					} else {
+						System.out.println("There is a bookcase with a book missing.");
+					}
 				}
 			} else {
 				System.out.println(theLocation);
