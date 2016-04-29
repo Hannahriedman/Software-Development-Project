@@ -34,7 +34,7 @@ public class Locale {
 				   return "You are now in the " + this.name + "\n" +  this.descrip;
 			   } else {
 				   return "You are now in the " + this.name + "\n" +  this.descrip +
-						   "There is " + this.person + " in the room";   
+						   this.person + " is in the room";   
 			   }
 			} else {
 				if (this.person == null) {
@@ -42,7 +42,7 @@ public class Locale {
 							   "\nThere is a " + this.item.name + " here.";
 				} else {
 					return "You are now in the " + this.name + "\n" +  this.descrip +
-							"There is " + this.person + " in the room" + "\nThere is a " 
+							this.person + " is in the room" + "\nThere is a " 
 							+ this.item.name + " here.";
 				}
 			}

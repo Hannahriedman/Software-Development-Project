@@ -33,6 +33,8 @@ public class HannahTextGame {
 	static int south = 2;
 	static int west  = 3;
 	
+	static int size = 6;
+	
 	static Scanner keyboard = new Scanner(System.in);
 	
 	/**
@@ -42,7 +44,7 @@ public class HannahTextGame {
 	static Item map1 =                  new Item("map","This is a map of the mansion.Type M to use it.",
 												"Type M to see map.","There are no prints",10);
 	static LimitedUseItem rope =        new LimitedUseItem("rope","This is a thick braided rope. It can be used a limited number of times.",
-												"You made a knot in the rope.","This has Mr.Money's prints.",5,2);
+												"You made a knot in the rope.","This has Mr.Jade's prints.",5,2);
 	static Item knife =                 new Item("knife","This knife is bloody.","You aren't good with knifes, you cut yourself.",
 												"This has the Chef's prints. The blood is from cow orgins.",10);
 	static Item key = 					new Item("key","This is a key","I wonder where the key goes",
@@ -51,31 +53,31 @@ public class HannahTextGame {
 												"The room is brighter now.","There are no prints.",15,5);
 	static Item book = 					new Item("book","Looks like this is from the library.",
 												"There is a note in the book, it says 'After Dinner meet me in the sitting room.'",
-												"There is the maid's and Nick's prints.",8);
+												"There is the maid's and Mrs.Periwinkle's prints.",8);
 	
 	static Npc chef = new Npc("Chef Charlie",6,
-							  "I was in here cleaning up after dinner.",
-							  "I was in here cleanig up after dinner.",
+							  "He says 'I was in here cleaning up after dinner.'",
+							  "He says 'I was in here cleanig up after dinner.'",
 							  "The Chef is telling the truth.");
-	static Npc maid = new Npc("Maid Mary",7,
-							  "I was cleaning in the Foyer but i saw Mr.Jade go into the sitting room",
-							  "I was cleaning in the Foyer",
+	static Npc maid = new Npc("Maid Megan",7,
+							  "She says 'I was cleaning in the Foyer but i saw Mr.Jade go into the sitting room'",
+							  "She says 'I was cleaning in the Foyer'",
 							  "The Maid is telling the truth");
 	static Npc laura = new Npc("Laura Lavender",8,
-							   "I was in the Foyer and the maid was cleaning.",
-							   "I was in the dining room",
+							   "She says 'I was in the Foyer and the maid was cleaning.'",
+							   "She says 'I was in the dining room'",
 							   "Laura is not telling the truth");
 	static Npc jack = new Npc("Jack Jade",2,
-							 "I was in the ",
-							 "I was in the study reading a book",
+							 "He says 'I was in the sitting room.' ",
+							 "He says 'I was in the study reading a book'",
 							 "Jack is not telling the truth");
 	static Npc paul = new Npc("Paul Periwinkle",4,
-							  "I was heading to the kitchen to get another drink",
-							  "I was in the dining room with Laura",
+							  "He says 'I was heading to the kitchen to get another drink'",
+							  "He says 'I was in the dining room with Laura'",
 							  "Mr.Periwinkle is not telling the truth");
 	static Npc sarah = new Npc("Sarah Silver",3,
-							  "I was in the study alone.",
-							  "I was in the study",
+							  "She says 'I was in the study alone.'",
+							  "She says 'I was in the study'",
 							  "Sarah is telling the truth.");
 	
 	/**
@@ -216,9 +218,10 @@ public class HannahTextGame {
 		System.out.println("*************************************");
 		System.out.println("Hello Detective " + player1.name +"! You have been called to investigate\nthe murder of "
 				+ "Mrs.Periwinkle.\n\nLook for clues and figure out the murderer, the murder weapon,\n"
-				+ "and the room the crime was committed in.\n\nWhen you think you know the answer, drop the\n"
-				+ "murder item in the room the crime was committed.\n\nYou can navigate the game by using " 
-				+ "N,E,S,W commands.\nType H to get a list of all commands,\nGo North to the door to start the adventure!");
+				+ "and the room the crime was committed in.\n\nFind items,use them,dust them and talk to people\n\n"
+				+ "When you think you know the answer, drop the\nmurder item in the room the crime was committed."
+				+ "\n\nYou can navigate the game by using N,E,S,W commands.\nType H to get a list of all commands,"
+				+ "\nGo North to the door to start the adventure!");
 	}
 	public static void byeMessage() {
 		
@@ -264,12 +267,16 @@ public class HannahTextGame {
 	public static String gameStatus() {
 		String userCommand;
 		
+		
+		System.out.println(player1.inventory.size());
+		System.out.println(size);
 		if (actionCount > 45) { // fails game when exceeds certain action count
 			System.out.println("I am sorry, you have made too many moves, you lose.");
 			return "quit";
-		} else if (player1.inventory.size() == 5) { // wins when collects all items
+		} else if (player1.inventory.size() == size) { // wins when collects all items
 			System.out.println("Congrats! You have collected all the clues!");
 			player1.score+=10;
+			size = 12; // to make it so it wont prompt user to keep playing if they chose to
 			System.out.println("Would you like to keep playing? Y or N");
 			userCommand = keyboard.nextLine();
 			if (userCommand.toUpperCase().equals("Y")) {
@@ -335,7 +342,7 @@ public class HannahTextGame {
 			showMap();
 			return "start over"; 
 		} else if (userCommand.equals("TALK")) {
-			//talk method
+			talk();
 			return "start over"; 
 		} else if (userCommand.startsWith("T")) {
 			String item = stringConverter(userCommand.split("T "));
