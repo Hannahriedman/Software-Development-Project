@@ -271,7 +271,7 @@ public class HannahTextGame {
 	public static String gameStatus() {
 		String userCommand;
 		
-		if (actionCount > 45) { // fails game when exceeds certain action count
+		if (actionCount > 40) { // fails game when exceeds certain action count
 			System.out.println("I am sorry, you have made too many moves, you lose.");
 			return "quit";
 		} else if (player1.inventory.size() == size) { // wins when collects all items
@@ -347,7 +347,6 @@ public class HannahTextGame {
 			return "start over"; 
 		} else if (userCommand.startsWith("T")) {
 			String item = stringConverter(userCommand.split("T "));
-			actionCount += 1;
 			player1.take(locations,item);
 			return "start over"; 
 		} else if (userCommand.equals("B")) {
@@ -356,12 +355,10 @@ public class HannahTextGame {
 			return "start over"; 
 		} else if (userCommand.startsWith("DUST")) {
 			String item = stringConverter(userCommand.split("DUST "));
-			actionCount += 1;
 			player1.dust(item);
 			return "start over"; 
 		} else if (userCommand.startsWith("D")) {
 			String item = stringConverter(userCommand.split("D "));
-			actionCount += 1;
 			player1.drop(locations,item);
 			return "start over"; 
 		} else if (userCommand.equals("P")) {
@@ -369,11 +366,9 @@ public class HannahTextGame {
 			return "start over"; 
 		} else if (userCommand.startsWith("U")) {
 			String item = stringConverter(userCommand.split("U "));
-			actionCount += 1;
 			use(item); 
 			return "start over"; 
 		} else if (userCommand.equals("X")) {
-			actionCount += 1;
 			examine(); 
 			return "start over"; 
 		} else if (userCommand.equals("H")) {
@@ -494,13 +489,14 @@ public class HannahTextGame {
 	/**
 	 * PLayer Satistics Method.
 	 * This Method prints out all of the players current statistics,
-	 * including current location, current points, and inventory.
+	 * including current location, current points, inventory and action count.
 	 */
 	public static void playerStats () {
 		
 		System.out.println("Current Location: " + locations[player1.location].name);
 		System.out.println("Current Points: " + player1.score);
 		System.out.println("Inventory: " + player1.inventory);
+		System.out.println("Action Count: " + actionCount);
 	}
 	/**
 	 * Backtrack Method.
