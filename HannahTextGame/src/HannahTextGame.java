@@ -617,7 +617,17 @@ public class HannahTextGame {
 		
 	}
 	public static void notes() {
-		System.out.println(notebook.toString());
+		
+		if (notebook.isEmpty()) {
+			System.out.println("You have no notes currently.");
+		} else {
+			System.out.println("Notebook:");
+			for (int i=0;i<notebook.size();i++) {
+				System.out.println(notebook.get(i));
+			
+			}
+		}
+		//System.out.println(notebook.toString());
 	}
 }
 
