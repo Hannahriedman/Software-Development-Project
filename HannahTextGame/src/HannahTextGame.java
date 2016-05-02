@@ -167,7 +167,7 @@ public class HannahTextGame {
 	 */
 	static LinkedTrail trail = new LinkedTrail();
 	
-	static ArrayList<String> notebook;
+	static ArrayList<String> notebook = new ArrayList<String>();
 	 
 
 	public static void main(String[] args) {
@@ -607,9 +607,11 @@ public class HannahTextGame {
 	}
 	
 	public static void Addnotes(String note) {
-		System.out.println(note);
-		if (note  != null) {
-			notebook.add(note);	
+		
+		if (notebook.contains(note)) {
+			// does not add another repeat of note
+		} else {
+			notebook.add(note);
 		}
 		
 		
