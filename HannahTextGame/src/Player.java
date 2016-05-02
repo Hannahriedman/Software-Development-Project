@@ -99,6 +99,7 @@ public class Player {
 			checkItem =this.inventory.get(i);
 			if (checkItem.name.equals(itemToDust)) {
 				System.out.println(checkItem.prints);
+				HannahTextGame.Addnotes(checkItem.name +":"+ checkItem.prints);
 				check+=1;
 			} 
 			

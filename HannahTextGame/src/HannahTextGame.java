@@ -4,6 +4,7 @@
  * Project 1
  * Date created: 1-29-16
  */
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -165,6 +166,8 @@ public class HannahTextGame {
 	 * Intialization of BreadcrumbTrail
 	 */
 	static LinkedTrail trail = new LinkedTrail();
+	
+	static ArrayList<String> notebook;
 	 
 
 	public static void main(String[] args) {
@@ -345,6 +348,9 @@ public class HannahTextGame {
 		} else if (userCommand.equals("TALK")) {
 			talk();
 			return "start over"; 
+		} else if (userCommand.equals("NOTES")) {
+			notes();
+			return "start over"; 
 		} else if (userCommand.startsWith("T")) {
 			String item = stringConverter(userCommand.split("T "));
 			player1.take(locations,item);
@@ -413,7 +419,8 @@ public class HannahTextGame {
 	/**
 	 * Move Method: uses from method to determin locale index,
 	 * then checks if index is equal to -1, if so tell user they cannot go that way.
-	 * If not, then print out the new location and set the players current location 
+	 * If not, then check if it is a SecureLocale and if it is unlocked then if not
+	 * print out the new location and set the players current location 
 	 * to that location. Then drop a crumb at the current location.
 	 * @param dir: integer that is the cardnial direction user wants to go
 	 * @param command: String represention of cardnial direction.
@@ -540,6 +547,7 @@ public class HannahTextGame {
 					if (((LimitedUseItem) checkItem).uses()) {
 						System.out.println("You now have the " + itemToUse + " Equiped.");
 						System.out.println(checkItem.use);
+						Addnotes(checkItem.name +":" + checkItem.use);
 					} else {
 						System.out.println("You cannot use the " + itemToUse);
 					}
@@ -547,6 +555,7 @@ public class HannahTextGame {
 				} else {
 					System.out.println("You now have the " + itemToUse + " Equiped.");
 					System.out.println(checkItem.use);
+					Addnotes(checkItem.name +":" + checkItem.use);
 				}
 			} 
 			
@@ -584,14 +593,29 @@ public class HannahTextGame {
 		
 		if (player1.trait.equals("Charismatic")) {
 			System.out.println(person.dialogue1);
+			Addnotes(person.name + ":"+ person.dialogue1);
 		} else if (player1.trait.equals("Observent")) {
 			System.out.println(person.dialogue2);
 			System.out.println(person.observent);
+			Addnotes(person.name + ":"+ person.dialogue2 + person.observent);
 		} else {
 			System.out.println(person.dialogue2);
+			Addnotes(person.name + ":"+ person.dialogue2);
 		}
 		
 		
+	}
+	
+	public static void Addnotes(String note) {
+		System.out.println(note);
+		if (note  != null) {
+			notebook.add(note);	
+		}
+		
+		
+	}
+	public static void notes() {
+		System.out.println(notebook.toString());
 	}
 }
 
