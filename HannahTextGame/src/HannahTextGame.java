@@ -5,6 +5,7 @@
  * Date created: 1-29-16
  */
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -490,7 +491,7 @@ public class HannahTextGame {
 				          + "'D' to drop item*\n'P' to see player stats\n"+ 
 				          "'X' to examine location for item\n'U' to use item*\n"
 				          + "'Dust' to dust item for fingerprints.*\n'Talk' to talk to "
-				          + "a character");
+				          + "a character\n'Notes' to look at notebook");
 		System.out.println("*need a specified item after command.\n");
 	}
 	/**
@@ -621,13 +622,13 @@ public class HannahTextGame {
 		if (notebook.isEmpty()) {
 			System.out.println("You have no notes currently.");
 		} else {
+			Collections.sort(notebook);
 			System.out.println("Notebook:");
 			for (int i=0;i<notebook.size();i++) {
 				System.out.println(notebook.get(i));
 			
 			}
 		}
-		//System.out.println(notebook.toString());
 	}
 }
 
