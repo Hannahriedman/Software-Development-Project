@@ -463,16 +463,19 @@ public class HannahTextGame {
 	public static void showMap () {
 			
 			if (player1.inventory.contains(map1)) {
-				System.out.println("*********THE MAP*******");
-				System.out.println("NOTE:there is one secret\nlocation not on map.---");
-				System.out.println("-----------------------");
-				System.out.println("-Kitchen---------------");
-				System.out.println("---|-------------------");
-				System.out.println("-DiningRm==Hall--Libray");
-				System.out.println("------------|-------|--");
-				System.out.println("SittingRm==Foyer==Study");
-				System.out.println("-------------|---------");
-				System.out.println("-----------Start-------");
+				System.out.println("*********THE MAP***********");
+				System.out.println("NOTE:there is one secret\nlocation not on map.\n");
+				System.out.println(" Kitchen               ");
+				System.out.println("    |                  ");
+				System.out.println("    |                  ");
+				System.out.println(" DiningRm----Hall   Library");
+				System.out.println("    	      |        |   ");
+				System.out.println("    	      |        |   ");
+				System.out.println("SittingRm----Foyer----Study");
+				System.out.println("    	      |          ");
+				System.out.println("    	      |          ");
+				System.out.println("    	     Start        ");
+				System.out.println("****************************");
 			} else {
 				System.out.println("You do not have the map!");
 			}
@@ -487,10 +490,10 @@ public class HannahTextGame {
 		System.out.println("COMMANDS");
 		System.out.println("--------");
 		System.out.println("'N','E','S','W' to go in the cardnial directions");
-		System.out.println("'Q' to quit the game\n'M' to see Map\n'T' to take item*\n"
-				          + "'D' to drop item*\n'P' to see player stats\n"+ 
-				          "'X' to examine location for item\n'U' to use item*\n"
-				          + "'Dust' to dust item for fingerprints.*\n'Talk' to talk to "
+		System.out.println("'Q' to quit the game\n'M' to see Map\n'T [item]' to take item*\n"
+				          + "'D [item]' to drop item*\n'P' to see player stats\n"+ 
+				          "'X' to examine location for item\n'U [item]' to use item*\n"
+				          + "'Dust [item]' to dust item for fingerprints.*\n'Talk' to talk to "
 				          + "a character\n'Notes' to look at notebook");
 		System.out.println("*need a specified item after command.\n");
 	}
