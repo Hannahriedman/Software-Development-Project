@@ -1,10 +1,18 @@
-
+/**
+ * Secure Locale Class
+ * This is for special locations that require
+ * an item to enter the location. This class extends 
+ * the Location Class as well as containing a requried 
+ * item. This also contains a cannotEnter method.
+ * @author hannahriedman
+ *
+ */
 public class SecureLocale extends Locale {
 	
 	public Item requiredItem;
 	
 	/**
-	 * Secure Location Class
+	 * Secure Location
 	 * Extends Locale Class
 	 * @param name: String of location name
 	 * @param descrip: String of location description

@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 
-
+/**
+ * Player Class 
+ * This class is for the player of the game.
+ * It contains a name, location, gender, trait,
+ * score, and inventory for the Player. It also holds
+ * the take, drop and dust methods.
+ * @author hannahriedman
+ *
+ */
 public class Player {
 	
 	public String          name;
@@ -10,7 +18,7 @@ public class Player {
 	public int             score     = 0;
 	public ArrayList<Item> inventory;
 	/**
-	 * PLayer Class
+	 * Player 
 	 * @param name: String of player name.
 	 * @param loc: integer of current location.
 	 * @param gender: String of player gender.
@@ -90,6 +98,15 @@ public class Player {
 		
 	}
 	
+	/**
+	 * Dust method.
+	 * For loop to check every item in inventory and compare it to
+	 * the item the user entered to check if player has that item in 
+	 * inventory. If they have the item, print out the message to show
+	 * if the item has prints on it or not. Then add a note of messsege 
+	 * in notebook.
+	 * @param item is teh iem the user wishes to dust.
+	 */
 	public void dust(String item) {
 		String itemToDust = item;
 		Item   checkItem;

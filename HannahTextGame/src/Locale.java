@@ -1,4 +1,12 @@
-
+/**
+ * Locale Class
+ * This is for Locations in the game.
+ * It contains a name, discription, item and 
+ * person for each Location. It also contains 
+ * a homemade toString method and name method.
+ * @author hannahriedman
+ *
+ */
 public class Locale {
 	
 	public String name;
@@ -7,7 +15,7 @@ public class Locale {
 	public Npc person;
 	
 	/**
-	 * Location Class
+	 * Location
 	 * @param name: String of location name
 	 * @param descrip: String of location description
 	 * @param item: Item Object of what item is at location

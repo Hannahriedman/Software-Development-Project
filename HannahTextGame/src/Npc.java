@@ -1,4 +1,13 @@
-
+/**
+ * Npc Class 
+ * This Class is For Non-Player Characters and contains
+ * Name, location, 2 diogloge options depending on player trait 
+ * and one special string that will show up if player trait is 
+ * observent. It also contains a homemade toString method to print 
+ * out the name of the NPC.
+ * @author hannahriedman
+ *
+ */
 public class Npc {
 	
 	public String          name;

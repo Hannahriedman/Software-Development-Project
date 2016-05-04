@@ -1,4 +1,12 @@
-
+/**
+ * Limited Use Item Class
+ * This is for special items that can only be used a 
+ * certain amount of times. This extends the Item class
+ * as well as containing usesreamining. This also has a
+ * uses method. 
+ * @author hannahriedman
+ *
+ */
 public class LimitedUseItem extends Item {
 
 	public int usesremaining;

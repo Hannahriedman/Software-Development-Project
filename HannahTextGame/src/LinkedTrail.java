@@ -1,4 +1,12 @@
-
+/**
+ * Linked Trail Class
+ * This implements the BreadcrumbTrail interface.
+ * This contains a dropCrumb, pickupCrumb,
+ * currentCrumb, and hasMoreCrumbs method.
+ * 
+ * @author hannahriedman
+ *
+ */
 
 public class LinkedTrail implements BreadcrumbTrail {
 	

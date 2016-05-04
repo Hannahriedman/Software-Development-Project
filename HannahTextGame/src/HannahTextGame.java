@@ -258,11 +258,14 @@ public class HannahTextGame {
 	// small method for player trait
 	public static void playerTrait(String trait) {
 		if (trait.toUpperCase().equals("O")) {
-			player1.trait = "Observent";
+			player1.trait = "Observent"; 
+			// if observent you can tell if NPC is telling the truth or not
 		} else if (trait.toUpperCase().equals("C")) {
 			player1.trait = "Charismatic";
+			// if Charismatic then NPC will tell truth and maybe extra info
 		} else {
 			player1.trait = "normal";
+			// if Normal will just repeat Observent message but cant tell if true
 		}
 		
 	}
@@ -588,7 +591,12 @@ public class HannahTextGame {
 		}
 		
 	}	
-	
+	/**
+	 * Talk Method
+	 * This method checks what trait the player has and gives the 
+	 * appropreate message depending on player trait. Also 
+	 * adds note of what NPC said to player in notebook.
+	 */
 	public static void talk() {
 		Locale currentLocation = locations[player1.location];
 		Npc person = currentLocation.person;
@@ -609,7 +617,13 @@ public class HannahTextGame {
 		
 		
 	}
-	
+	/**
+	 * Addnotes Method
+	 * This Method checks to see if the notebook 
+	 * already contains the note and if not then 
+	 * adds it to the notebook.
+	 * @param note: String of information to go in notebook
+	 */
 	public static void Addnotes(String note) {
 		
 		if (notebook.contains(note)) {
@@ -620,6 +634,11 @@ public class HannahTextGame {
 		
 		
 	}
+	/**
+	 * Notes Method
+	 * This Method checks to see if notebook is empty and then 
+	 * sorts the notebook and prints out all notes in the notebook.
+	 */
 	public static void notes() {
 		
 		if (notebook.isEmpty()) {

@@ -1,4 +1,9 @@
-
+/**
+ * BreadCrumb Trail Interface
+ * This is for the Stack- like LinkedTrail Class.
+ * @author hannahriedman
+ *
+ */
 public interface BreadcrumbTrail {
 
 	public void    dropCrumb(int x); // push
