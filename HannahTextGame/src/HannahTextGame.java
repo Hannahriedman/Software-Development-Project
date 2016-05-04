@@ -226,7 +226,8 @@ public class HannahTextGame {
 		System.out.println("*************************************");
 		System.out.println("Hello Detective " + player1.name +"! You have been called to investigate\nthe murder of "
 				+ "Mrs.Periwinkle.\n\nLook for clues and figure out the murderer, the murder weapon,\n"
-				+ "and the room the crime was committed in.\n\nFind items,use them,dust them and talk to people\n\n"
+				+ "and the room the crime was committed in.\n\nFind items,use them,dust them, talk to people and\n"
+				+ "look in your notebook if you forget what clues you have gathered.\n\n"
 				+ "When you think you know the answer, drop the\nmurder item in the room the crime was committed."
 				+ "\n\nYou can navigate the game by using N,E,S,W commands.\nType H to get a list of all commands,"
 				+ "\nGo North to the door to start the adventure!");
@@ -609,7 +610,7 @@ public class HannahTextGame {
 		} else if (player1.trait.equals("Observent")) {
 			System.out.println(person.dialogue2);
 			System.out.println(person.observent);
-			Addnotes(person.name + ":"+ person.dialogue2 + person.observent);
+			Addnotes(person.name + ":"+ person.dialogue2 +"\n* " + person.observent);
 		} else {
 			System.out.println(person.dialogue2);
 			Addnotes(person.name + ":"+ person.dialogue2);
@@ -645,11 +646,13 @@ public class HannahTextGame {
 			System.out.println("You have no notes currently.");
 		} else {
 			Collections.sort(notebook);
-			System.out.println("Notebook:");
+			System.out.println("******************************************");
+			System.out.println("*              NOTEBOOK");
 			for (int i=0;i<notebook.size();i++) {
-				System.out.println(notebook.get(i));
+				System.out.println("* " + notebook.get(i));
 			
 			}
+			System.out.println("******************************************");
 		}
 	}
 }
